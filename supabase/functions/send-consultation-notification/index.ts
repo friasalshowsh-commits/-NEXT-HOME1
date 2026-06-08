@@ -44,6 +44,10 @@ serve(async (req) => {
     }
 
     // Call Resend API via Fetch
+    // We use "onboarding@resend.dev" temporarily for unverified Resend account testing. 
+    // If you verify your domain, you can change this to "notifications@nexthome-group.com".
+    const senderEmail = Deno.env.get('SENDER_EMAIL') || 'onboarding@resend.dev';
+    
     const resendResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -51,7 +55,7 @@ serve(async (req) => {
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'NEXT HOME Portal <notifications@nexthome-group.com>', // Replace with your verified sender domain in Resend
+        from: `NEXT HOME <${senderEmail}>`,
         to: [ADMIN_NOTIFICATION_EMAIL],
         subject: `Strategic Consultation Inquiry: ${full_name}`,
         html: `

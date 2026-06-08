@@ -128,6 +128,23 @@ export default function App() {
         throw error;
       }
 
+      // Securely trigger the email notification via Supabase Edge Functions.
+      // If the email service fails, the form submission remains successfully stored without blocking the user.
+      try {
+        await supabaseClient.functions.invoke('send-consultation-notification', {
+          body: {
+            full_name: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            company: formData.company,
+            message: formData.message,
+            created_at: new Date().toISOString()
+          }
+        });
+      } catch (emailNotificationErr) {
+        console.error("Non-blocking error dispatching Resend email notification via Edge Function:", emailNotificationErr);
+      }
+
       setFormSubmitted(true);
       setFormData({
         fullName: '',
