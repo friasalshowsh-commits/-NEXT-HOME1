@@ -99,6 +99,7 @@ export interface TranslationSchema {
       messageRef: string;
       submitBtn: string;
       successMsg: string;
+      errorMsg: string;
     };
   };
   insightsSec: {
@@ -250,7 +251,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       name: "Firas Alshawsh",
       role: "Director of Business Development & Strategic Partnerships",
       phone: "+966 50 661 2761",
-      email: "alshawshfras3@gmail.com",
+      email: "info@nexthome-group.com",
       location: "Riyadh, Saudi Arabia",
       button: "Get in Touch",
       form: {
@@ -261,7 +262,8 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
         phoneRef: "Mobile Number",
         messageRef: "Message context or cooperation goals",
         submitBtn: "Send Request",
-        successMsg: "Your executive inquiry has been securely dispatched. We will connect with you shortly.",
+        successMsg: "Your inquiry has been submitted successfully, our team will contact you shortly.",
+        errorMsg: "Unable to send the request, please try again.",
       },
     },
     insightsSec: {
@@ -429,7 +431,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       name: "فراس الشاوش",
       role: "مدير تطوير الأعمال والشراكات الاستراتيجية",
       phone: "+966 50 661 2761",
-      email: "alshawshfras3@gmail.com",
+      email: "info@nexthome-group.com",
       location: "الرياض، المملكة العربية السعودية",
       button: "تواصل معنا الآن",
       form: {
@@ -440,7 +442,8 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
         phoneRef: "رقم الجوال",
         messageRef: "نص الرسالة أو أهداف التعاون",
         submitBtn: "إرسال الطلب",
-        successMsg: "تم إرسال رسالتكم الاستراتيجية بأمان إلى قطاع تطوير الأعمال والشراكات بـ نيكست هوم. سيقوم أحد مسؤولي مكتبنا التنفيذي بالتواصل معكم بأقرب وقت.",
+        successMsg: "تم إرسال طلبك بنجاح، وسيتواصل معك فريقنا قريبًا.",
+        errorMsg: "تعذر إرسال الطلب، يرجى المحاولة مرة أخرى.",
       },
     },
     insightsSec: {

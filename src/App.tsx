@@ -23,6 +23,7 @@ import {
   Send
 } from 'lucide-react';
 import { translations } from './translations';
+import { getSupabase, isSupabaseConfigured } from './supabaseClient';
 
 // Premium interactive assets
 import heroSkyline from './assets/images/riyadh_skyline_hero_1780861686093.png';
@@ -39,6 +40,8 @@ export default function App() {
   
   // Custom contact form state
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     fullName: '',
     company: '',
@@ -84,14 +87,48 @@ export default function App() {
     });
   };
 
-  const submitContactForm = (e: FormEvent) => {
+  const submitContactForm = async (e: FormEvent) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.email) return;
+    if (!formData.fullName || !formData.email || !formData.phone || !formData.message) return;
     
-    // Simulate real high-end dispatch
-    setFormSubmitted(true);
-    setTimeout(() => {
-      // Keep state alive for feedback, clear inputs
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      if (!isSupabaseConfigured()) {
+        // Safe developer fallback: if Supabase variables aren't defined yet, simulate save so the preview is fully functional.
+        console.warn("Supabase credentials are not filled yet in your environment. Simulating a mock submission delay.");
+        await new Promise((resolve) => setTimeout(resolve, 800));
+        setFormSubmitted(true);
+        setFormData({
+          fullName: '',
+          company: '',
+          email: '',
+          phone: '',
+          message: ''
+        });
+        return;
+      }
+
+      const supabaseClient = getSupabase();
+      
+      // Save form submission into 'consultation_requests' table
+      const { error } = await supabaseClient
+        .from('consultation_requests')
+        .insert({
+          full_name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          message: formData.message,
+          status: 'new'
+        });
+
+      if (error) {
+        throw error;
+      }
+
+      setFormSubmitted(true);
       setFormData({
         fullName: '',
         company: '',
@@ -99,7 +136,17 @@ export default function App() {
         phone: '',
         message: ''
       });
-    }, 1000);
+
+    } catch (err: any) {
+      console.error("Error submitting contact form:", err);
+      setSubmitError(
+        lang === 'ar' 
+          ? "تعذر إرسال الطلب، يرجى المحاولة مرة أخرى." 
+          : "Unable to submit inquiry, please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Maps icon classes dynamically to preserve luxury look
@@ -1008,14 +1055,33 @@ export default function App() {
                         ></textarea>
                       </div>
 
-                      {/* Submit */}
-                      <div className="flex justify-end pt-4">
+                      {/* Submit & Error Message */}
+                      {submitError && (
+                        <div className="p-4 bg-red-950/40 border border-red-900/50 rounded-sm text-sm text-red-400 font-sans text-right rtl:text-right ltr:text-left">
+                          {submitError}
+                        </div>
+                      )}
+
+                      <div className="flex justify-end pt-2">
                         <button 
                           type="submit"
-                          className="group inline-flex items-center gap-3 px-10 py-3.5 bg-[#C5A059] hover:bg-[#d4af37] text-neutral-950 rounded-sm tracking-wider text-sm font-sans font-medium transition-all duration-300 cursor-pointer focus:outline-none"
+                          disabled={isSubmitting}
+                          className={`group inline-flex items-center gap-3 px-10 py-3.5 bg-[#C5A059] text-neutral-950 rounded-sm tracking-wider text-sm font-sans font-medium transition-all duration-300 focus:outline-none ${
+                            isSubmitting 
+                              ? 'opacity-60 cursor-not-allowed' 
+                              : 'hover:bg-[#d4af37] cursor-pointer'
+                          }`}
                         >
-                          <Send className="w-4 h-4 text-neutral-950 group-hover:scale-110 transition-transform" />
-                          <span>{currentTrans.contact.form.submitBtn}</span>
+                          {isSubmitting ? (
+                            <div className="w-4 h-4 border-2 border-neutral-950 border-t-transparent rounded-full animate-spin"></div>
+                          ) : (
+                            <Send className="w-4 h-4 text-neutral-950 group-hover:scale-110 transition-transform" />
+                          )}
+                          <span>
+                            {isSubmitting 
+                              ? (lang === 'ar' ? 'جاري الإرسال...' : 'Sending...') 
+                              : currentTrans.contact.form.submitBtn}
+                          </span>
                         </button>
                       </div>
 
@@ -1096,7 +1162,7 @@ export default function App() {
 
                 {/* Line 3: Email connection */}
                 <a 
-                  href="mailto:alshawshfras3@gmail.com"
+                  href="mailto:info@nexthome-group.com"
                   className="flex items-start gap-4 p-4 border border-neutral-900 hover:border-gold-500/20 bg-neutral-950/60 transition-colors group block"
                 >
                   <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-sm text-gold-500 shrink-0 group-hover:bg-gold-500/10 transition-colors">
@@ -1271,63 +1337,88 @@ export default function App() {
       </AnimatePresence>
 
       {/* 9. THE GRAND FINALE CORPORATE FOOTER */}
-      <footer className="relative z-20 bg-[#050505] border-t border-neutral-900 py-20 text-neutral-400 overflow-hidden">
+      <footer className="relative z-20 bg-[#050505] border-t border-neutral-900/60 py-24 text-neutral-400 overflow-hidden font-sans">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 sm:gap-16 items-start pb-16 border-b border-neutral-900">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-16 items-start pb-20 border-b border-neutral-900/50">
             
-            {/* Logo and Tagline (takes 5 cols) */}
-            <div className="md:col-span-5 space-y-6">
-              <a href="#" className="flex flex-col select-none">
-                <span className="font-serif text-2xl tracking-widest text-gold-500 font-bold uppercase">
+            {/* Column 1: Corporate Profile */}
+            <div className="space-y-6">
+              <a href="#" className="flex flex-col select-none group">
+                <span className="text-xl tracking-[0.25em] text-white font-light uppercase">
                   NEXT HOME
                 </span>
-                <span className="text-sm tracking-[0.25em] text-[#faf7f0]/80 font-serif -mt-1 font-medium">
+                <span className="text-xs tracking-[0.3em] text-neutral-500 -mt-0.5 font-light">
                   نيكست هوم
                 </span>
               </a>
-              <p className="text-xs text-neutral-500 leading-relaxed font-light max-w-sm">
+              <p className="text-xs text-neutral-500 leading-relaxed font-light max-w-xs">
                 {currentTrans.footer.tagline}
               </p>
+              <div className="text-[11px] text-neutral-500 font-light font-mono tracking-wide">
+                {lang === 'ar' ? 'سجل تجاري: ٧٠٥٣٠٢٧٤٣٤' : 'CR No. 7053027434'}
+              </div>
             </div>
 
-            {/* Links Block 1 (takes 3 cols) */}
-            <div className="md:col-span-3 space-y-4">
-              <h4 className="font-mono text-xs uppercase text-[#faf7f0] font-semibold tracking-widest select-none">
-                {currentTrans.footer.quickLinks}
+            {/* Column 2: Business areas / مجالات الأعمال */}
+            <div className="space-y-5">
+              <h4 className="text-xs uppercase text-white font-medium tracking-[0.2em] select-none">
+                {lang === 'ar' ? 'مجالات الأعمال' : 'Business Areas'}
               </h4>
-              <ul className="space-y-2 text-xs">
-                <li><a href="#about" className="hover:text-gold-400 transition-colors">{currentTrans.nav.about}</a></li>
-                <li><a href="#strategy" className="hover:text-gold-400 transition-colors">{currentTrans.nav.strategy}</a></li>
-                <li><a href="#services" className="hover:text-gold-400 transition-colors">{currentTrans.nav.services}</a></li>
-                <li><a href="#footprint" className="hover:text-gold-400 transition-colors">{currentTrans.nav.footprint}</a></li>
+              <ul className="space-y-3 text-xs text-neutral-500 font-light">
+                <li>{lang === 'ar' ? 'تطوير الأعمال' : 'Business Development'}</li>
+                <li>{lang === 'ar' ? 'الشراكات الاستراتيجية' : 'Strategic Partnerships'}</li>
+                <li>{lang === 'ar' ? 'التسويق العقاري' : 'Real Estate Marketing'}</li>
               </ul>
             </div>
 
-            {/* Links Block 2 (takes 4 cols) */}
-            <div className="md:col-span-4 space-y-4">
-              <h4 className="font-mono text-xs uppercase text-[#faf7f0] font-semibold tracking-widest select-none">
-                Governance & Operations
+            {/* Column 3: Corporate Headquarters / المقر الرئيسي */}
+            <div className="space-y-5">
+              <h4 className="text-xs uppercase text-white font-medium tracking-[0.2em] select-none">
+                {lang === 'ar' ? 'الموقع والمقر' : 'Corporate Headquarters'}
               </h4>
-              <div className="space-y-3">
-                <span className="text-xs block text-neutral-500 leading-relaxed">
-                  NEXT HOME is a privately held corporation integrated dynamically under the foreign and domestic investments networks of Saudi Arabia.
-                </span>
-                <span className="text-xs block text-gold-500/80 font-serif font-medium cursor-pointer hover:underline">
-                  {currentTrans.footer.legalLink}
-                </span>
-              </div>
+              <p className="text-xs text-neutral-500 leading-relaxed font-light">
+                {lang === 'ar' ? 'الرياض، المملكة العربية السعودية' : 'Riyadh, Saudi Arabia'}
+              </p>
+              <p className="text-[11px] text-neutral-600 font-light leading-normal">
+                {lang === 'ar' ? 'البوابة العقارية والاستثمارية المستدامة' : 'Bespoke Private Asset & Expansion Hub'}
+              </p>
+            </div>
+
+            {/* Column 4: Communication / الاتصالات التنفيذية */}
+            <div className="space-y-5">
+              <h4 className="text-xs uppercase text-white font-medium tracking-[0.2em] select-none">
+                {lang === 'ar' ? 'الاتصال والخدمات' : 'Communication Center'}
+              </h4>
+              <ul className="space-y-3 text-xs font-light text-neutral-500">
+                <li>
+                  <a 
+                    href="mailto:info@nexthome-group.com" 
+                    className="hover:text-white transition-colors duration-200"
+                  >
+                    info@nexthome-group.com
+                  </a>
+                </li>
+                <li dir="ltr" className="rtl:text-right ltr:text-left">
+                  <a 
+                    href="tel:+966506612761" 
+                    className="hover:text-white transition-colors duration-200"
+                  >
+                    +966 50 661 2761
+                  </a>
+                </li>
+              </ul>
             </div>
 
           </div>
 
-          {/* Sub Footer with Copyright */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-neutral-600">
-            <span>{currentTrans.footer.allRightsReserved}</span>
-            <div className="flex items-center gap-4">
-              <span>Saudi Commerce Registry #1010328901 Verified</span>
-              <span>•</span>
-              <span className="text-gold-500/60 font-medium">Discreet Luxury Partner Network</span>
+          {/* Sub Footer with Legal & Copyright */}
+          <div className="pt-10 flex flex-col sm:flex-row items-center justify-between gap-6 text-[10px] tracking-widest text-neutral-500 font-light">
+            <span className="font-light">© NEXT HOME. All Rights Reserved.</span>
+            <div className="flex items-center gap-6">
+              <span className="hover:text-white cursor-pointer transition-colors duration-200 uppercase">
+                {currentTrans.footer.legalLink}
+              </span>
             </div>
           </div>
 

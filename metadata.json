@@ -1,6 +1,6 @@
 {
   "name": "NEXT HOME",
-  "description": "Bilingual Luxury Corporate Portal for NEXT HOME | نيكست هوم",
+  "description": "Bilingual Luxury Corporate Portal for NEXT HOME",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
