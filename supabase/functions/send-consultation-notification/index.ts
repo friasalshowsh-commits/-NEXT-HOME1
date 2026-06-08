@@ -10,6 +10,7 @@ const ADMIN_NOTIFICATION_EMAIL = Deno.env.get('ADMIN_NOTIFICATION_EMAIL') || 'in
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
 }
 
 serve(async (req) => {
@@ -23,14 +24,19 @@ serve(async (req) => {
     const body = await req.json()
     const record = body.record || body
 
-    if (!record || !record.full_name) {
-      return new Response(JSON.stringify({ error: 'Missing row data in payload' }), {
+    const full_name = record.full_name || record.fullName;
+    const email = record.email;
+    const phone = record.phone;
+    const company = record.company;
+    const message = record.message;
+    const created_at = record.created_at || record.createdAt;
+
+    if (!record || !full_name) {
+      return new Response(JSON.stringify({ error: 'Missing row data in payload', received: body }), {
         status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       })
     }
-
-    const { full_name, email, phone, company, message, created_at } = record;
 
     if (!RESEND_API_KEY) {
       console.warn('RESEND_API_KEY environment variable is not defined on Supabase Secrets.')
