@@ -69,6 +69,10 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.title = "NEXT HOME Group | نيكست هوم";
+  }, [lang]);
+
   const currentTrans = translations[lang];
 
   // Helper to switch language
