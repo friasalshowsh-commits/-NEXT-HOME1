@@ -124,6 +124,12 @@ export interface TranslationSchema {
     quickLinks: string;
     legalLink: string;
   };
+  leadership: {
+    label: string;
+    name: string;
+    title: string;
+    quote: string;
+  };
 }
 
 export const translations: Record<"en" | "ar", TranslationSchema> = {
@@ -306,6 +312,12 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       quickLinks: "Corporate Overview",
       legalLink: "Discreet Governance & Compliance Policy",
     },
+    leadership: {
+      label: "Leadership",
+      name: "Mohammed Ahmed Ali Saleh",
+      title: "General Manager",
+      quote: "Leading NEXT HOME with a focus on trust, strategic relationships, and long-term growth.",
+    },
   },
   ar: {
     nav: {
@@ -485,6 +497,12 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       allRightsReserved: "© ٢٠٢٦ نيكست هوم. جميع الحقوق محفوظة.",
       quickLinks: "الرؤية والسياسة المؤسسية",
       legalLink: "الحوكمة والامتثال وسياسة الخصوصية السرية للشركاء",
+    },
+    leadership: {
+      label: "الإدارة",
+      name: "محمد أحمد علي صالح",
+      title: "المدير العام",
+      quote: "يقود نيكست هوم برؤية تركز على الثقة، والعلاقات الاستراتيجية، والنمو طويل المدى.",
     },
   },
 };

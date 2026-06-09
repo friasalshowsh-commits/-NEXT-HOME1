@@ -28,6 +28,7 @@ import { getSupabase, isSupabaseConfigured } from './supabaseClient';
 // Premium interactive assets
 import heroSkyline from './assets/images/riyadh_skyline_hero_1780861686093.png';
 import executivePortrait from './assets/images/firas_alshawsh_portrait_1780861701628.png';
+import generalManagerPortrait from './assets/images/general_manager_1781011186311.png';
 import riyadhFootprint from './assets/images/riyadh_saudi_vertical_1780862353837.png';
 import jeddahFootprint from './assets/images/jeddah_saudi_vertical_1780862368910.png';
 import dammamFootprint from './assets/images/dammam_saudi_vertical_1780862382331.png';
@@ -932,6 +933,76 @@ export default function App() {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* 7.5 GENERAL MANAGER LEADERSHIP TRUST BLOCK */}
+      <section className="relative z-20 py-24 bg-[#0a0a0a] border-t border-neutral-900 overflow-hidden">
+        {/* Subtle decorative background detail */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#C5A059]/5 rounded-full filter blur-[120px] pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-black/60 filter blur-[80px] pointer-events-none"></div>
+
+        <div className="max-w-5xl mx-auto px-6 sm:px-8">
+          <div className="bg-neutral-950 border border-neutral-900 p-8 sm:p-12 relative overflow-hidden shadow-2xl">
+            {/* Elegant corner highlights */}
+            <div className="absolute top-0 right-0 w-16 h-[1px] bg-gradient-to-l from-[#C5A059]/30 to-transparent"></div>
+            <div className="absolute top-0 right-0 w-[1px] h-16 bg-gradient-to-b from-[#C5A059]/30 to-transparent"></div>
+            <div className="absolute bottom-0 left-0 w-16 h-[1px] bg-gradient-to-r from-[#C5A059]/30 to-transparent"></div>
+            <div className="absolute bottom-0 left-0 w-[1px] h-16 bg-gradient-to-t from-[#C5A059]/30 to-transparent"></div>
+
+            <div className={`grid grid-cols-1 md:grid-cols-12 gap-10 sm:gap-12 items-center`} dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+              
+              {/* Image Column */}
+              <div className="md:col-span-5 flex justify-center">
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7 }}
+                  className="relative group shrink-0 w-full max-w-[280px] aspect-[3/4] overflow-hidden border border-[#C5A059]/25 shadow-xl bg-neutral-900"
+                >
+                  <img 
+                    src={generalManagerPortrait} 
+                    alt={currentTrans.leadership.name} 
+                    className="w-full h-full object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-500"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent"></div>
+                  
+                  {/* Subtle golden branding strip inside image */}
+                  <div className="absolute bottom-4 inset-x-4 flex items-center justify-between">
+                    <span className="font-mono text-[9px] tracking-widest text-[#C5A059] uppercase">NEXT HOME</span>
+                    <span className="w-1.5 h-1.5 bg-[#C5A059] rounded-full animate-pulse"></span>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Text Column */}
+              <div className={`md:col-span-7 space-y-6 ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
+                <div>
+                  <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.25em] text-[#C5A059] uppercase bg-[#C5A059]/5 border border-[#C5A059]/15 px-3 py-1 inline-block rounded-sm mb-4">
+                    {currentTrans.leadership.label}
+                  </span>
+
+                  <div className="space-y-2">
+                    <h3 className={`text-2xl sm:text-3xl text-white font-medium ${lang === 'ar' ? 'font-sans font-bold' : 'font-serif'}`}>
+                      {currentTrans.leadership.name}
+                    </h3>
+                    <p className="text-xs tracking-wider text-[#C5A059] font-mono uppercase">
+                      {currentTrans.leadership.title}
+                    </p>
+                  </div>
+                </div>
+
+                <div className={`border-neutral-900 pt-6 border-t relative before:absolute before:top-0 before:w-12 before:h-[1px] before:bg-[#C5A059]/35 ${lang === 'ar' ? 'before:right-0' : 'before:left-0'}`}>
+                  <p className="text-neutral-300 text-sm sm:text-base leading-relaxed font-light italic">
+                    {currentTrans.leadership.quote}
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
       </section>
 
