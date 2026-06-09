@@ -26,7 +26,7 @@ import { translations } from './translations';
 import { getSupabase, isSupabaseConfigured } from './supabaseClient';
 
 // Premium interactive assets
-import heroSkyline from './assets/images/riyadh_skyline_hero_1780861686093.png';
+import heroSkyline from './assets/images/riyadh_kafd_skyline_hero_1781012580447.png';
 import executivePortrait from './assets/images/firas_alshawsh_portrait_1780861701628.png';
 import generalManagerPortrait from './assets/images/general_manager_1781011186311.png';
 import riyadhFootprint from './assets/images/riyadh_saudi_vertical_1780862353837.png';
@@ -319,7 +319,7 @@ export default function App() {
         <div className="absolute inset-0 z-0">
           <img 
             src={heroSkyline} 
-            alt="Riyadh premium twilight skyline mapping NEXT HOME" 
+            alt="Riyadh KAFD premium futuristic architecture representing NEXT HOME strategic growth" 
             className="w-full h-full object-cover object-center scale-105 filter brightness-85 contrast-105"
             referrerPolicy="no-referrer"
           />
@@ -1453,9 +1453,6 @@ export default function App() {
               <p className="text-xs text-neutral-500 leading-relaxed font-light max-w-xs">
                 {currentTrans.footer.tagline}
               </p>
-              <div className="text-[11px] text-neutral-500 font-light font-mono tracking-wide">
-                {lang === 'ar' ? 'سجل تجاري: ٧٠٥٣٠٢٧٤٣٤' : 'CR No. 7053027434'}
-              </div>
             </div>
 
             {/* Column 2: Business areas / مجالات الأعمال */}
@@ -1470,17 +1467,24 @@ export default function App() {
               </ul>
             </div>
 
-            {/* Column 3: Corporate Headquarters / المقر الرئيسي */}
+            {/* Column 3: Dedicated Corporate Information Block */}
             <div className="space-y-5">
               <h4 className="text-xs uppercase text-white font-medium tracking-[0.2em] select-none">
-                {lang === 'ar' ? 'الموقع والمقر' : 'Corporate Headquarters'}
+                {lang === 'ar' ? 'معلومات الشركة' : 'Corporate Information'}
               </h4>
-              <p className="text-xs text-neutral-500 leading-relaxed font-light">
-                {lang === 'ar' ? 'الرياض، المملكة العربية السعودية' : 'Riyadh, Saudi Arabia'}
-              </p>
-              <p className="text-[11px] text-neutral-600 font-light leading-normal">
-                {lang === 'ar' ? 'البوابة العقارية والاستثمارية المستدامة' : 'Bespoke Private Asset & Expansion Hub'}
-              </p>
+              <div className="space-y-4 font-sans">
+                <p className="text-xs text-neutral-400 font-light tracking-wide leading-relaxed">
+                  {lang === 'ar' ? 'المملكة العربية السعودية • الرياض' : 'Saudi Arabia • Riyadh'}
+                </p>
+                <div className="pt-3 border-t border-neutral-900/60 flex flex-col space-y-1">
+                  <span className="text-[10px] font-mono tracking-[0.15em] text-[#C5A059] uppercase block">
+                    {lang === 'ar' ? 'السجل التجاري' : 'Commercial Registration'}
+                  </span>
+                  <span className="text-sm sm:text-base font-semibold tracking-widest text-neutral-200 font-mono">
+                    7053027434
+                  </span>
+                </div>
+              </div>
             </div>
 
             {/* Column 4: Communication / الاتصالات التنفيذية */}

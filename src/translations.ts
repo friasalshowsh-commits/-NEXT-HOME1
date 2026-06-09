@@ -316,7 +316,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       label: "Leadership",
       name: "Mohammed Ahmed Ali Saleh",
       title: "General Manager",
-      quote: "Leading NEXT HOME with a focus on trust, strategic relationships, and long-term growth.",
+      quote: "Leading NEXT HOME with a vision built on trust, strategic relationships, and long-term growth. He focuses on developing meaningful partnerships and connecting promising opportunities with the right stakeholders to support sustainable expansion across Saudi Arabia.",
     },
   },
   ar: {
@@ -502,7 +502,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       label: "الإدارة",
       name: "محمد أحمد علي صالح",
       title: "المدير العام",
-      quote: "يقود نيكست هوم برؤية تركز على الثقة، والعلاقات الاستراتيجية، والنمو طويل المدى.",
+      quote: "يقود نيكست هوم برؤية ترتكز على الثقة، وبناء العلاقات الاستراتيجية، وصناعة فرص النمو طويلة المدى. ويعمل على تطوير شراكات نوعية وربط الفرص الواعدة بالجهات المناسبة بما يدعم التوسع المستدام داخل المملكة العربية السعودية.",
     },
   },
 };
