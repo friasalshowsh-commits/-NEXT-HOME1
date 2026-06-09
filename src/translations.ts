@@ -86,6 +86,8 @@ export interface TranslationSchema {
     subtitle: string;
     name: string;
     role: string;
+    officeTitle: string;
+    officeDesc: string;
     phone: string;
     email: string;
     location: string;
@@ -256,6 +258,8 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       subtitle: "We welcome direct consultations with aligned partners, entrepreneurs, sovereign investors, and global brands seeking long-term commercial opportunities in Saudi Arabia.",
       name: "Firas Alshawsh",
       role: "Director of Business Development & Strategic Partnerships",
+      officeTitle: "Business Development & Strategic Partnerships Office",
+      officeDesc: "Leading growth opportunities, strategic partnerships, and long-term business relationships across Saudi Arabia.",
       phone: "+966 50 661 2761",
       email: "info@nexthome-group.com",
       location: "Riyadh, Saudi Arabia",
@@ -442,6 +446,8 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       subtitle: "نرحب بالنقاشات المباشرة والمناقشات الاستراتيجية مع الشركاء المتوافقين، ورواد الأعمال الطموحين، والمستثمرين، وكبريات العلامات الباحثة عن مكانة وأثر طويل الأمد في المملكة.",
       name: "فراس الشاوش",
       role: "مدير تطوير الأعمال والشراكات الاستراتيجية",
+      officeTitle: "مكتب تطوير الأعمال والشراكات الاستراتيجية",
+      officeDesc: "نقود فرص النمو، وبناء الشراكات الاستراتيجية، وتطوير العلاقات التجارية طويلة المدى داخل المملكة العربية السعودية.",
       phone: "+966 50 661 2761",
       email: "info@nexthome-group.com",
       location: "الرياض، المملكة العربية السعودية",

@@ -27,7 +27,6 @@ import { getSupabase, isSupabaseConfigured } from './supabaseClient';
 
 // Premium interactive assets
 import heroSkyline from './assets/images/riyadh_kafd_skyline_hero_1781012580447.png';
-import executivePortrait from './assets/images/firas_alshawsh_portrait_1780861701628.png';
 import generalManagerPortrait from './assets/images/general_manager_1781011186311.png';
 import riyadhFootprint from './assets/images/riyadh_saudi_vertical_1780862353837.png';
 import jeddahFootprint from './assets/images/jeddah_saudi_vertical_1780862368910.png';
@@ -1195,31 +1194,29 @@ export default function App() {
             <div className="lg:col-span-6 space-y-10">
               
               {/* Executive display layout */}
-              <div className="border border-neutral-900 bg-neutral-950 p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-8 relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-2 h-full bg-gold-500/30"></div>
+              <div className="border border-neutral-900 bg-neutral-950 p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-[#C5A059]"></div>
                 
-                {/* Circular Portrait Image */}
-                <div className="w-32 h-32 md:w-36 md:h-36 shrink-0 relative rounded-full overflow-hidden border-2 border-gold-500/15">
-                  <img 
-                    src={executivePortrait} 
-                    alt="Firas Alshawsh - Director of Business Development" 
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-black to-transparent"></div>
+                {/* Premium Corporate Icon inside a sophisticated gold / dark-tint container */}
+                <div className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 flex items-center justify-center bg-[#C5A059]/5 border border-[#C5A059]/20 rounded-sm text-[#C5A059]">
+                  <Building className="w-8 h-8 sm:w-10 sm:h-10 text-[#C5A059]" />
                 </div>
 
-                {/* Profile text */}
-                <div className="space-y-3 text-center sm:text-start">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold-400 block">KEY REPRESENTATIVE</span>
-                  <h3 className={`text-2xl sm:text-3xl text-white font-medium ${lang === 'ar' ? 'font-sans font-bold' : 'font-serif'}`}>{currentTrans.contact.name}</h3>
-                  <p className="text-xs tracking-wider text-neutral-400 leading-normal max-w-sm">
-                    {currentTrans.contact.role}
+                {/* Office text */}
+                <div className="space-y-3 text-center sm:text-start flex-1 min-w-0">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#C5A059] block">
+                    {lang === 'ar' ? 'المكتب التنفيذي' : 'EXECUTIVE OFFICE'}
+                  </span>
+                  <h3 className={`text-xl sm:text-2xl text-white font-medium leading-snug ${lang === 'ar' ? 'font-sans font-bold text-right' : 'font-serif text-left'}`}>
+                    {currentTrans.contact.officeTitle}
+                  </h3>
+                  <p className={`text-xs text-neutral-400 leading-relaxed font-light ${lang === 'ar' ? 'text-right' : 'text-left'}`}>
+                    {currentTrans.contact.officeDesc}
                   </p>
                   
-                  <div className="inline-flex py-1 px-2.5 bg-gold-500/10 border border-gold-500/15 rounded-sm">
-                    <span className="text-[10px] font-mono uppercase tracking-[0.1em] text-gold-300 font-bold block">
-                      NEXT HOME DIRECT DIRECTOR OFFICE
+                  <div className="inline-flex py-1 px-2.5 bg-[#C5A059]/10 border border-[#C5A059]/15 rounded-sm">
+                    <span className="text-[9px] font-mono uppercase tracking-[0.1em] text-[#C5A059] font-medium block">
+                      NEXT HOME PARTNERSHIPS
                     </span>
                   </div>
                 </div>
