@@ -1223,54 +1223,71 @@ export default function App() {
 
               </div>
 
-              {/* Verified contact connections block */}
-              <div className="space-y-6">
+              {/* Executive Contact Card matching the uploaded luxury format */}
+              <div 
+                className="border border-neutral-900 bg-[#050505] p-8 sm:p-10 relative overflow-hidden shadow-2xl" 
+                dir={lang === 'ar' ? 'rtl' : 'ltr'}
+              >
+                {/* Accent thin line on top to match high-end card styling */}
+                <div className="absolute top-0 inset-x-0 h-[1px] bg-[#C5A059]/30"></div>
                 
-                {/* Line 1: Address location */}
-                <div className="flex items-start gap-4 p-4 border border-neutral-900 hover:border-gold-500/20 bg-neutral-950/60 transition-colors">
-                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-sm text-gold-500 shrink-0">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest block mb-0.5">Corporate Headquarters</span>
-                    <p className="text-white text-base font-light">{currentTrans.contact.location}</p>
-                    <p className="text-xs text-neutral-500 mt-0.5">Olaya District Gateway, King Fahd Road Pillar</p>
-                  </div>
+                {/* Visual Header / Title matching raw image style */}
+                <div className="space-y-2 mb-8 text-right rtl:text-right ltr:text-left">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.25em] text-[#C5A059] block font-medium">
+                    {lang === 'ar' ? 'جهة الاتصال التنفيذية' : 'Executive Contact'}
+                  </span>
+                  <h3 className={`text-3xl sm:text-4xl text-white font-medium tracking-tight leading-none mt-1 ${lang === 'ar' ? 'font-sans font-bold' : 'font-serif'}`}>
+                    {lang === 'ar' ? 'فراس الشاوش' : 'Firas Alshawsh'}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-[#C5A059] tracking-wider font-light mt-2">
+                    {lang === 'ar' ? 'مدير تطوير الأعمال والشراكات الاستراتيجية' : 'Director of Business Development & Strategic Partnerships'}
+                  </p>
                 </div>
 
-                {/* Line 2: Mobile connection */}
-                <a 
-                  href="tel:+966506612761"
-                  className="flex items-start gap-4 p-4 border border-neutral-900 hover:border-gold-500/20 bg-neutral-950/60 transition-colors group block"
-                >
-                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-sm text-gold-500 shrink-0 group-hover:bg-gold-500/10 transition-colors">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div className="text-right rtl:text-right ltr:text-left">
-                    <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest block mb-0.5">Direct Executive Line</span>
-                    <p className="text-white text-base font-medium font-mono tracking-wider group-hover:text-gold-300 transition-colors inline-block" dir="ltr">
-                      {currentTrans.contact.phone}
-                    </p>
-                    <p className="text-xs text-neutral-500 mt-0.5 font-light block">{lang === 'ar' ? 'اتصال مؤمن ومباشر للمكتب التنفيذي' : 'Encrypted official line'}</p>
-                  </div>
-                </a>
+                {/* Divider Line */}
+                <div className="w-full border-b border-neutral-900/80 mb-6"></div>
 
-                {/* Line 3: Email connection */}
-                <a 
-                  href="mailto:info@nexthome-group.com"
-                  className="flex items-start gap-4 p-4 border border-neutral-900 hover:border-gold-500/20 bg-neutral-950/60 transition-colors group block"
-                >
-                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-sm text-gold-500 shrink-0 group-hover:bg-gold-500/10 transition-colors">
-                    <Mail className="w-5 h-5" />
+                {/* Info Rows */}
+                <div className="space-y-4">
+                  
+                  {/* Phone Row */}
+                  <div className="flex justify-between items-center py-4 border-b border-neutral-900/60 hover:bg-neutral-900/10 transition-colors">
+                    <span className="text-[12px] text-[#C5A059] font-medium tracking-wide">
+                      {lang === 'ar' ? 'الهاتف' : 'Phone'}
+                    </span>
+                    <a 
+                      href="tel:+966506612761" 
+                      className="text-white text-sm sm:text-base font-semibold font-mono hover:text-[#C5A059] transition-colors"
+                      dir="ltr"
+                    >
+                      +966 50 661 2761
+                    </a>
                   </div>
-                  <div className="break-all">
-                    <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest block mb-0.5">Direct Executive Dispatch</span>
-                    <p className="text-white text-base font-medium font-mono group-hover:text-gold-300 transition-colors">
-                      {currentTrans.contact.email}
-                    </p>
-                    <p className="text-xs text-neutral-500 mt-0.5 font-light">{lang === 'ar' ? 'الرد مؤكد في غضون ٢٤ ساعة عمل' : 'Verified desk monitored daily'}</p>
+
+                  {/* Email Row - Using Corporate Email info@nexthome-group.com as requested by user */}
+                  <div className="flex justify-between items-center py-4 border-b border-neutral-900/60 hover:bg-neutral-900/10 transition-colors">
+                    <span className="text-[12px] text-[#C5A059] font-medium tracking-wide">
+                      {lang === 'ar' ? 'البريد' : 'Email'}
+                    </span>
+                    <a 
+                      href="mailto:info@nexthome-group.com" 
+                      className="text-white text-sm sm:text-base font-semibold font-mono hover:text-[#C5A059] transition-colors break-all pl-2"
+                    >
+                      info@nexthome-group.com
+                    </a>
                   </div>
-                </a>
+
+                  {/* Location Row */}
+                  <div className="flex justify-between items-center py-4 border-b border-neutral-900/60 hover:bg-neutral-900/10 transition-colors">
+                    <span className="text-[12px] text-[#C5A059] font-medium tracking-wide">
+                      {lang === 'ar' ? 'الموقع' : 'Location'}
+                    </span>
+                    <span className="text-white text-sm sm:text-base font-light">
+                      {lang === 'ar' ? 'الرياض، المملكة العربية السعودية' : 'Riyadh, Saudi Arabia'}
+                    </span>
+                  </div>
+
+                </div>
 
               </div>
 
