@@ -23,12 +23,25 @@ export interface TranslationSchema {
     insights: string;
     contact: string;
     langLabel: string;
+    toggleMenu: string;
   };
+  companySubtitle: string;
   hero: {
     badge: string;
+    title: string;
     titleLines: string[];
     paragraph: string;
     cta: string;
+    cta_services: string;
+    cta_contact: string;
+  };
+  aboutSection: {
+    eyebrow: string;
+    title: string;
+    paragraphs: string[];
+    bullets: string[];
+    cta: string;
+    imageAlt: string;
   };
   stats: {
     experienceVal: string;
@@ -45,11 +58,21 @@ export interface TranslationSchema {
     strategicInvestmentsVal: string;
     strategicInvestmentsLabel: string;
   };
+  howWeWork: {
+    sectionBadge: string;
+    title: string;
+    steps: {
+      title: string;
+      description: string;
+    }[];
+  };
   businessAreas: {
     sectionBadge: string;
     title: string;
     subtitle: string;
     items: BusinessArea[];
+    collapseDetails: string;
+    exploreScope: string;
   };
   expansion: {
     sectionBadge: string;
@@ -70,15 +93,24 @@ export interface TranslationSchema {
       khobarSub: string;
       khobarCountry: string;
     };
+    hqBadge: string;
+    mapAriaLabel: string;
+    mapCaption: string;
+    bullets: {
+      title: string;
+      desc: string;
+    }[];
   };
   quote: {
     text: string;
     author: string;
+    cta: string;
   };
   whyPartner: {
     sectionBadge: string;
     title: string;
     items: FeatureColumn[];
+    imageAlt: string;
   };
   contact: {
     sectionBadge: string;
@@ -92,6 +124,11 @@ export interface TranslationSchema {
     email: string;
     location: string;
     button: string;
+    executiveOfficeLabel: string;
+    executiveContactLabel: string;
+    phoneLabel: string;
+    emailLabel: string;
+    locationLabel: string;
     form: {
       title: string;
       fullNameRef: string;
@@ -102,6 +139,12 @@ export interface TranslationSchema {
       submitBtn: string;
       successMsg: string;
       errorMsg: string;
+      successTitle: string;
+      submitAnother: string;
+      fullNamePlaceholder: string;
+      companyPlaceholder: string;
+      phonePlaceholder: string;
+      messagePlaceholder: string;
     };
   };
   insightsSec: {
@@ -125,6 +168,11 @@ export interface TranslationSchema {
     allRightsReserved: string;
     quickLinks: string;
     legalLink: string;
+    businessAreasLabel: string;
+    corporateInfoLabel: string;
+    communicationLabel: string;
+    companyLocation: string;
+    commercialRegistrationLabel: string;
   };
   leadership: {
     label: string;
@@ -144,12 +192,32 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       insights: "Vision & Insights",
       contact: "Contact Us",
       langLabel: "العربية",
+      toggleMenu: "Toggle Menu",
     },
+    companySubtitle: "Business Group",
     hero: {
       badge: "SAUDI STRATEGIC GROWTH COMPANY",
+      title: "Building Growth Opportunities in the Saudi Market",
       titleLines: ["We build.", "We grow.", "We empower."],
       paragraph: "A premier Saudi enterprise specializing in business development, building strategic partnerships, and enabling companies to access growth and expansion opportunities inside the Saudi market.",
       cta: "Discover More",
+      cta_services: "Explore Our Services",
+      cta_contact: "Contact Us",
+    },
+    aboutSection: {
+      eyebrow: "About the Company",
+      title: "We Open the Doors to Growth and Opportunities",
+      paragraphs: [
+        "NEXT HOME is a premier Saudi business group dedicated to business development, strategic partnerships, and enabling companies to capture real opportunities inside the Kingdom.",
+        "We operate as a trusted institutional bridge, helping regional and international brands navigate regulations, build powerful alliances, and execute high-value expansions with full agility."
+      ],
+      bullets: [
+        "Deep understanding of the Saudi market and its strategic needs.",
+        "A vast, elite network of relationships across high-growth sectors.",
+        "A specialized professional team with over 16 years of hands-on expertise."
+      ],
+      cta: "More About the Company",
+      imageAlt: "Saudi business meeting in a modern corporate environment"
     },
     stats: {
       experienceVal: "16+ Years",
@@ -158,7 +226,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       partnersLabel: "Strategic Partnership Network",
       sectorsVal: "7",
       sectorsLabel: "Core Growth Sectors",
-      presenceVal: "Active",
+      presenceVal: "Active Presence",
       presenceLabel: "Saudi Market Presence",
       visionNote: "Future Vision Highlights (Strategic projection for 2030 perspective)",
       visionToggleLabelOff: "Show Future Vision",
@@ -166,20 +234,37 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       strategicInvestmentsVal: "15+",
       strategicInvestmentsLabel: "Strategic Investments Projected",
     },
+    howWeWork: {
+      sectionBadge: "STRATEGIC METHODOLOGY",
+      title: "How We Work",
+      steps: [
+        {
+          title: "Business Development",
+          description: "We help companies discover growth opportunities and build practical expansion pathways inside the Saudi market."
+        },
+        {
+          title: "Strategic Partnerships",
+          description: "We build long-term relationships and partnerships between businesses, investors, and suitable commercial entities."
+        },
+        {
+          title: "Market Access",
+          description: "We support companies entering the Saudi market by understanding the commercial landscape and building the right network of relations."
+        },
+        {
+          title: "Real Estate Marketing",
+          description: "Developing and marketing real estate projects and connecting them with target clients and partners."
+        }
+      ]
+    },
     businessAreas: {
       sectionBadge: "WHAT WE DO",
       title: "Our Business Areas",
       subtitle: "We partner with businesses, investors, and brands to unlock long-term value and sustainable growth inside the Kingdom.",
       items: [
         {
-          id: "real-estate",
-          title: "Real Estate Marketing",
-          description: "Strategic marketing solutions that position premier real estate opportunities and drive qualified commercial demand.",
-        },
-        {
           id: "bus-dev",
           title: "Business Development",
-          description: "Identifying opportunities, building key capabilities, and creating sustainable growth pathways for high-potential enterprises.",
+          description: "Discovering growth opportunities, building key capabilities, and creating sustainable growth pathways.",
         },
         {
           id: "partnerships",
@@ -188,15 +273,27 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
         },
         {
           id: "market-entry",
-          title: "Market Entry & Expansion",
-          description: "Supporting premium global brands and regional institutional investors entering or expanding within the Saudi market.",
+          title: "Saudi Market Entry",
+          description: "Complete regulatory, operational, and strategic support to successfully enter the Saudi commercial landscape.",
         },
         {
-          id: "distribution",
-          title: "Premium Product Distribution",
-          description: "Helping selected luxury and key enterprise brands establish physical presence, distribution pipelines, and deep market credibility in Saudi Arabia.",
+          id: "marketing-expansion",
+          title: "Marketing & Expansion",
+          description: "High-impact marketing and growth strategies designed to effectively reach target audiences and investors.",
+        },
+        {
+          id: "real-estate",
+          title: "Real Estate Opportunities",
+          description: "Identifying and positioning high-yield real estate projects with strategic corporate entities.",
+        },
+        {
+          id: "commercial-rep",
+          title: "Commercial Representation",
+          description: "Serving as local representatives to build immediate and powerful commercial presence.",
         },
       ],
+      collapseDetails: "Collapse Details",
+      exploreScope: "Explore Operational Scope",
     },
     expansion: {
       sectionBadge: "STRATEGIC EXPANSION",
@@ -217,10 +314,28 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
         khobarSub: "Gulf Business Gateway",
         khobarCountry: "Kingdom of Saudi Arabia",
       },
+      hqBadge: "HEADQUARTERS",
+      mapAriaLabel: "Map showing geographic commercial coverage of NEXT HOME across Riyadh, Jeddah, Dammam and Al Khobar",
+      mapCaption: "Commercial reach across key Saudi markets",
+      bullets: [
+        {
+          title: "Headquarters in Riyadh",
+          desc: "Our core executive and strategic base of operations is in the capital."
+        },
+        {
+          title: "KSA-wide Access",
+          desc: "Operational capacity and commercial outreach to serve all major regions."
+        },
+        {
+          title: "Institutional Alliances",
+          desc: "Established, trusted networks of corporate and family relationships inside the Kingdom."
+        }
+      ]
     },
     quote: {
       text: "“We do not look for suppliers. We build long-term strategic partnerships.”",
       author: "NEXT HOME EXECUTIVE BOARD",
+      cta: "Start Partnership With Us"
     },
     whyPartner: {
       sectionBadge: "OUR VALUES",
@@ -251,6 +366,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
           description: "Agile, direct leadership management of critical milestones by expert Saudi and international corporate executives.",
         },
       ],
+      imageAlt: "A strategic partnership meeting between Saudi business leaders in a modern corporate environment"
     },
     contact: {
       sectionBadge: "LET'S BUILD THE NEXT",
@@ -264,6 +380,11 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       email: "info@nexthome-group.com",
       location: "Riyadh, Saudi Arabia",
       button: "Get in Touch",
+      executiveOfficeLabel: "EXECUTIVE OFFICE",
+      executiveContactLabel: "Executive Contact",
+      phoneLabel: "Phone",
+      emailLabel: "Email",
+      locationLabel: "Location",
       form: {
         title: "Submit Strategic Inquiry",
         fullNameRef: "Name",
@@ -274,6 +395,12 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
         submitBtn: "Send Request",
         successMsg: "Your inquiry has been submitted successfully, our team will contact you shortly.",
         errorMsg: "Unable to send the request, please try again.",
+        successTitle: "Inquiry Dispatched",
+        submitAnother: "Submit Another Inquiry",
+        fullNamePlaceholder: "Enter your full name",
+        companyPlaceholder: "Your company or initiative name",
+        phonePlaceholder: "e.g. 05xxxxxxxx",
+        messagePlaceholder: "Write your inquiry details or requested collaboration areas...",
       },
     },
     insightsSec: {
@@ -315,6 +442,11 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       allRightsReserved: "© 2026 NEXT HOME. All rights reserved.",
       quickLinks: "Corporate Overview",
       legalLink: "Discreet Governance & Compliance Policy",
+      businessAreasLabel: "Business Areas",
+      corporateInfoLabel: "Corporate Information",
+      communicationLabel: "Communication Center",
+      companyLocation: "Saudi Arabia • Riyadh",
+      commercialRegistrationLabel: "Commercial Registration",
     },
     leadership: {
       label: "Leadership",
@@ -332,12 +464,32 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       insights: "الرؤية",
       contact: "تواصل معنا",
       langLabel: "English",
+      toggleMenu: "تبديل القائمة",
     },
+    companySubtitle: "مجموعة الأعمال",
     hero: {
       badge: "شركة سعودية للنمو الاستراتيجي",
+      title: "نبني فرص النمو في السوق السعودي",
       titleLines: ["نبني.", "ننمو.", "نُمكّن."],
       paragraph: "شركة سعودية متخصصة في تطوير الأعمال وبناء الشراكات الاستراتيجية وتمكين الشركات من الوصول إلى فرص النمو والتوسع داخل السوق السعودي.",
       cta: "اكتشف المزيد",
+      cta_services: "اكتشف خدماتنا",
+      cta_contact: "تواصل معنا",
+    },
+    aboutSection: {
+      eyebrow: "عن الشركة",
+      title: "نحن نفتح الأبواب للنمو والفرص",
+      paragraphs: [
+        "تعد نيكست هوم بمثابة مجموعة أعمال سعودية رائدة متخصصة في تطوير الأعمال وصياغة الشراكات الاستراتيجية الفاعلة وتمكين المؤسسات من الوصول إلى فرص حقيقية للنمو والاستقرار داخل المملكة.",
+        "نعمل كجسر مؤسسي موثوق لمساعدة العلامات التجارية والشركات الكبرى على التنقل المرن في السوق المحلي، وبناء علاقات متينة، وتنفيذ توسعات حيوية تتطابق مع المحركات الاقتصادية الوطنية."
+      ],
+      bullets: [
+        "فهم عميق للسوق السعودي واحتياجاته الاستراتيجية.",
+        "شبكة علاقات واسعة ونخبوية في مختلف القطاعات الحيوية.",
+        "فريق عمل متخصص بخبرة عملية قوية وعميقة تمتد لأكثر من ١٦ عامًا."
+      ],
+      cta: "المزيد عن الشركة",
+      imageAlt: "اجتماع أعمال سعودي في بيئة مؤسسية حديثة"
     },
     stats: {
       experienceVal: "+١٦ سنة",
@@ -346,7 +498,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       partnersLabel: "شبكة شراكات استراتيجية",
       sectorsVal: "٧",
       sectorsLabel: "قطاعات نمو رئيسية",
-      presenceVal: "نشط",
+      presenceVal: "حضور نشط",
       presenceLabel: "حضور مؤكد في السوق السعودي",
       visionNote: "أبرز ملامح الرؤية المستقبلية (نظرة استراتيجية تتماشى مع رؤية ٢٠٣٠)",
       visionToggleLabelOff: "عرض الرؤية المستقبلية",
@@ -354,37 +506,66 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       strategicInvestmentsVal: "+١٥",
       strategicInvestmentsLabel: "استثمارات استراتيجية مستهدفة",
     },
+    howWeWork: {
+      sectionBadge: "نهج العمل الاستراتيجي",
+      title: "كيف نعمل",
+      steps: [
+        {
+          title: "تطوير الأعمال",
+          description: "نساعد الشركات على اكتشاف فرص النمو وبناء مسارات توسع عملية داخل السوق السعودي."
+        },
+        {
+          title: "الشراكات الاستراتيجية",
+          description: "نبني علاقات وشراكات طويلة الأمد بين الشركات والمستثمرين والجهات التجارية المناسبة."
+        },
+        {
+          title: "الوصول إلى السوق",
+          description: "ندعم دخول الشركات إلى السوق السعودي عبر فهم البيئة التجارية وبناء شبكة العلاقات المناسبة."
+        },
+        {
+          title: "التسويق العقاري",
+          description: "تطوير وتسويق المشاريع العقارية وربطها بالعملاء والشركاء المستهدفين."
+        }
+      ]
+    },
     businessAreas: {
       sectionBadge: "تفاصيل أعمالنا",
       title: "مجالات أعمالنا",
       subtitle: "نعمل بجدية وثبات مع الشركات والمستثمرين والعلامات التجارية لبناء قيمة طويلة المدى ونمو مستدام داخل المملكة العربية السعودية.",
       items: [
         {
-          id: "real-estate",
-          title: "التسويق العقاري",
-          description: "حلول تسويق عقاري استراتيجية تبرز الفرص العقارية المميزة وتستقطب وتؤهل الطلب التجاري الجاد.",
-        },
-        {
           id: "bus-dev",
           title: "تطوير الأعمال",
-          description: "تحديد واقتناص الفرص الاستثمارية الواعدة، وبناء القدرات المؤسسية، وخلق مسارات نمو تجاري مستدام.",
+          description: "نساعد الشركات على اكتشاف فرص النمو وبناء مسارات توسع عملية داخل السوق السعودي.",
         },
         {
           id: "partnerships",
-          title: "الشراكات الاستراتيجية",
+          title: "بناء الشراكات",
           description: "تأسيس تحالفات متينة ومستدامة تتيح دخول أسواق حيوية، وتوسع نطاق الوصول، وتصنع قيمًا متبادلة.",
         },
         {
           id: "market-entry",
-          title: "دخول السوق والتوسع",
-          description: "مرافقة ودعم العلامات التجارية والمستثمرين الإقليميين والدوليين في دخول السوق السعودي أو التوسع داخل ركائزه.",
+          title: "دخول السوق السعودي",
+          description: "مرافقة ودعم العلامات التجارية والمستثمرين الإقليميين والدوليين في دخول السوق السعودي بنجاح وثقة.",
         },
         {
-          id: "distribution",
-          title: "توزيع المنتجات المميزة",
-          description: "تمكين العلامات التجارية الفاخرة والنخبوية من ترسيخ حضورها، وإطلاق سلاسل التوزيع وبناء مصداقية تجارية متكاملة بالمملكة.",
+          id: "marketing-expansion",
+          title: "التسويق والتوسع",
+          description: "استراتيجيات تسويق وحلول نمو مصممة للوصول بفعالية إلى الجمهور والمستهدفين والمستثمرين.",
+        },
+        {
+          id: "real-estate",
+          title: "الفرص العقارية",
+          description: "توفير وتسويق الفرص والمشاريع العقارية الواعدة وربطها بالعملاء والمستثمرين الاستراتيجيين.",
+        },
+        {
+          id: "commercial-rep",
+          title: "التمثيل التجاري",
+          description: "تمثيل الشركات محليًا وبناء حضور سريع وقوي للشركات العالمية داخل السوق السعودي.",
         },
       ],
+      collapseDetails: "عرض أقل",
+      exploreScope: "عرض نطاق العمل بالتفصيل",
     },
     expansion: {
       sectionBadge: "التوسع الاستراتيجي",
@@ -405,10 +586,28 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
         khobarSub: "بوابة الأعمال الخليجية والشراكات",
         khobarCountry: "المملكة العربية السعودية",
       },
+      hqBadge: "المقر الرئيسي",
+      mapAriaLabel: "خريطة توضح الوصول التجاري الجغرافي لشركة نيكست هوم في الرياض وجدة والدمام والخبر",
+      mapCaption: "وصول تجاري إلى الأسواق الرئيسية في المملكة",
+      bullets: [
+        {
+          title: "المقر الرئيسي في الرياض",
+          desc: "قاعدتنا التنفيذية والاستراتيجية تتركز وتنطلق من العاصمة الرياض."
+        },
+        {
+          title: "تغطية السوق والوصول التجاري",
+          desc: "القدرة التنافسية والتشغيلية لتغطية وتلبية الاحتياجات بمختلف مدن ومناطق المملكة الرئيسية."
+        },
+        {
+          title: "شبكة علاقات ممتدة",
+          desc: "شبكة صلبة من العلاقات النوعية والشركاء لخدمة وتمكين التوسعات للأعمال."
+        }
+      ]
     },
     quote: {
       text: "«نحن لا نبحث عن موردين تقليديين للخدمات والمواد. بل نكرس جهودنا لبناء شراكات استراتيجية متكاملة طويلة الأجل.»",
       author: "المجلس التنفيذي لـ نيكست هوم",
+      cta: "ابدأ شراكة معنا"
     },
     whyPartner: {
       sectionBadge: "قيم الشراكة لدينا",
@@ -439,6 +638,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
           description: "إشراف قيادي مباشر من قبل نخبة من المديرين التنفيذيين المحليين والدوليين لضمان دقة التنفيذ السريع.",
         },
       ],
+      imageAlt: "اجتماع شراكة استراتيجية بين رجال أعمال سعوديين في بيئة مؤسسية حديثة"
     },
     contact: {
       sectionBadge: "لنصنع المستقبل معاً",
@@ -452,6 +652,11 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       email: "info@nexthome-group.com",
       location: "الرياض، المملكة العربية السعودية",
       button: "تواصل معنا الآن",
+      executiveOfficeLabel: "المكتب التنفيذي",
+      executiveContactLabel: "جهة الاتصال التنفيذية",
+      phoneLabel: "الهاتف",
+      emailLabel: "البريد",
+      locationLabel: "الموقع",
       form: {
         title: "تقديم طلب استفسار استراتيجي",
         fullNameRef: "الاسم",
@@ -462,6 +667,12 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
         submitBtn: "إرسال الطلب",
         successMsg: "تم إرسال طلبك بنجاح، وسيتواصل معك فريقنا قريبًا.",
         errorMsg: "تعذر إرسال الطلب، يرجى المحاولة مرة أخرى.",
+        successTitle: "تم الإرسال بنجاح",
+        submitAnother: "إرسال طلب آخر",
+        fullNamePlaceholder: "اكتب اسمك الكامل",
+        companyPlaceholder: "اسم شركتك أو مبادرتك",
+        phonePlaceholder: "اكتب رقم جوالك (مثال: 05xxxxxxxx)",
+        messagePlaceholder: "اكتب تفاصيل استفسارك أو مجالات التعاون المطلوبة...",
       },
     },
     insightsSec: {
@@ -503,6 +714,11 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       allRightsReserved: "© ٢٠٢٦ نيكست هوم. جميع الحقوق محفوظة.",
       quickLinks: "الرؤية والسياسة المؤسسية",
       legalLink: "الحوكمة والامتثال وسياسة الخصوصية السرية للشركاء",
+      businessAreasLabel: "مجالات الأعمال",
+      corporateInfoLabel: "معلومات الشركة",
+      communicationLabel: "الاتصال والخدمات",
+      companyLocation: "المملكة العربية السعودية • الرياض",
+      commercialRegistrationLabel: "السجل التجاري",
     },
     leadership: {
       label: "الإدارة",
