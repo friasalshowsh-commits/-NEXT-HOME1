@@ -83,15 +83,19 @@ export interface TranslationSchema {
       riyadh: string;
       riyadhSub: string;
       riyadhCountry: string;
+      riyadhAlt: string;
       jeddah: string;
       jeddahSub: string;
       jeddahCountry: string;
+      jeddahAlt: string;
       dammam: string;
       dammamSub: string;
       dammamCountry: string;
+      dammamAlt: string;
       khobar: string;
       khobarSub: string;
       khobarCountry: string;
+      khobarAlt: string;
     };
     hqBadge: string;
     mapAriaLabel: string;
@@ -304,15 +308,19 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
         riyadh: "Riyadh",
         riyadhSub: "Headquarters & Strategic Base",
         riyadhCountry: "Kingdom of Saudi Arabia",
+        riyadhAlt: "Riyadh skylines and corporate headquarters",
         jeddah: "Jeddah",
         jeddahSub: "Western Region Market Access",
         jeddahCountry: "Kingdom of Saudi Arabia",
+        jeddahAlt: "Jeddah corporate office branch",
         dammam: "Dammam",
         dammamSub: "Eastern Province Commercial Reach",
         dammamCountry: "Kingdom of Saudi Arabia",
+        dammamAlt: "Dammam commercial seaport and base",
         khobar: "Al Khobar",
         khobarSub: "Gulf Business Gateway",
         khobarCountry: "Kingdom of Saudi Arabia",
+        khobarAlt: "Al Khobar corporate skyline",
       },
       hqBadge: "HEADQUARTERS",
       mapAriaLabel: "Map showing geographic commercial coverage of NEXT HOME across Riyadh, Jeddah, Dammam and Al Khobar",
@@ -576,15 +584,19 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
         riyadh: "الرياض",
         riyadhSub: "المقر الرئيسي والقاعدة الاستراتيجية",
         riyadhCountry: "المملكة العربية السعودية",
+        riyadhAlt: "أبراج ومقر شركة نيكست هوم بالرياض",
         jeddah: "جدة",
         jeddahSub: "بوابة المنطقة الغربية والوصول للسوق",
         jeddahCountry: "المملكة العربية السعودية",
+        jeddahAlt: "مكتب فرع المنطقة الغربية في جدة",
         dammam: "الدمام",
         dammamSub: "الامتداد التجاري للمنطقة الشرقية",
         dammamCountry: "المملكة العربية السعودية",
+        dammamAlt: "ميناء وقاعدة أعمال شركة نيكست هوم في الدمام",
         khobar: "الخبر",
         khobarSub: "بوابة الأعمال الخليجية والشراكات",
         khobarCountry: "المملكة العربية السعودية",
+        khobarAlt: "نافذة أبراج الخبر للأعمال",
       },
       hqBadge: "المقر الرئيسي",
       mapAriaLabel: "خريطة توضح الوصول التجاري الجغرافي لشركة نيكست هوم في الرياض وجدة والدمام والخبر",
