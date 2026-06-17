@@ -25,6 +25,10 @@ export interface TranslationSchema {
     langLabel: string;
     toggleMenu: string;
   };
+  brand: {
+    name: string;
+    subtitle: string;
+  };
   companySubtitle: string;
   hero: {
     badge: string;
@@ -197,6 +201,10 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       contact: "Contact Us",
       langLabel: "العربية",
       toggleMenu: "Toggle Menu",
+    },
+    brand: {
+      name: "NEXT HOME",
+      subtitle: "NEXT HOME",
     },
     companySubtitle: "Business Group",
     hero: {
@@ -473,6 +481,10 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       contact: "تواصل معنا",
       langLabel: "English",
       toggleMenu: "تبديل القائمة",
+    },
+    brand: {
+      name: "NEXT HOME",
+      subtitle: "نيكست هوم",
     },
     companySubtitle: "مجموعة الأعمال",
     hero: {

@@ -1,0 +1,21 @@
+{
+  "name": "NEXT HOME",
+  "short_name": "NEXT HOME",
+  "description": "شركة سعودية متخصصة في تطوير الأعمال وبناء الشراكات الاستراتيجية",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#07583F",
+  "icons": [
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

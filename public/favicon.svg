@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%" fill="none">
+  <!-- Clean background circle/square is omitted to maintain transparent shape -->
+  <g fill="#07583F">
+    <!-- Left Pillar (N) -->
+    <rect x="96" y="96" width="64" height="320" rx="12" />
+    
+    <!-- Diagonal (N Connection) -->
+    <path d="M 96 96 H 160 L 312 416 H 248 Z" />
+    
+    <!-- Middle Pillar (shared N & H side) -->
+    <rect x="248" y="96" width="64" height="320" rx="12" />
+    
+    <!-- Modern architectural Crossbar (H) -->
+    <rect x="290" y="224" width="80" height="64" rx="8" />
+    
+    <!-- Right Pillar (H) -->
+    <rect x="352" y="96" width="64" height="320" rx="12" />
+  </g>
+</svg>

@@ -74,7 +74,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    document.title = "NEXT HOME Group | نيكست هوم";
+    document.title = "NEXT HOME | نيكست هوم";
   }, [lang]);
 
   // Track currently active section on scroll
@@ -252,12 +252,12 @@ export default function App() {
           
           {/* Column 1: Executive Logo */}
           <div className="flex items-center justify-start flex-nowrap">
-            <a href="#" className="flex flex-col text-right rtl:text-right ltr:text-left focus:outline-none select-none group whitespace-nowrap">
-              <span className="font-sans text-[19px] sm:text-[21px] lg:text-[26px] font-bold tracking-wider text-[#07583F] uppercase leading-none">
-                NEXT HOME
+            <a href="#" className="flex flex-col text-right rtl:text-right ltr:text-left focus:outline-none select-none group whitespace-nowrap leading-none gap-0.5">
+              <span className="font-sans text-[22px] sm:text-[24px] lg:text-[27px] font-extrabold tracking-wider text-[#151B18] uppercase leading-none">
+                {currentTrans.brand.name}
               </span>
-              <span className="text-[8px] sm:text-[9px] lg:text-[12px] tracking-[0.05em] text-[#07583F] uppercase mt-0.5 font-semibold leading-none">
-                {lang === 'ar' ? 'مجموعة الأعمال' : 'BUSINESS GROUP'}
+              <span className="text-[10px] sm:text-[11px] lg:text-[12px] tracking-[0.05em] text-[#151B18] uppercase font-bold leading-none">
+                {currentTrans.brand.subtitle}
               </span>
             </a>
           </div>
