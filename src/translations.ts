@@ -188,6 +188,12 @@ export interface TranslationSchema {
     title: string;
     quote: string;
   };
+  legalInfo: {
+    title: string;
+    commercialRegistration: string;
+    vatNumber: string;
+    demo: string;
+  };
 }
 
 export const translations: Record<"en" | "ar", TranslationSchema> = {
@@ -470,6 +476,12 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       title: "General Manager",
       quote: "Leading NEXT HOME with a vision built on trust, strategic relationships, and long-term growth. He focuses on developing meaningful partnerships and connecting promising opportunities with the right stakeholders to support sustainable expansion across Saudi Arabia.",
     },
+    legalInfo: {
+      title: "Legal Information",
+      commercialRegistration: "Commercial Registration",
+      vatNumber: "VAT Registration Number",
+      demo: "Demo Data",
+    },
   },
   ar: {
     nav: {
@@ -749,6 +761,12 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       name: "محمد أحمد علي صالح",
       title: "المدير العام",
       quote: "يقود نيكست هوم برؤية ترتكز على الثقة، وبناء العلاقات الاستراتيجية، وصناعة فرص النمو طويلة المدى. ويعمل على تطوير شراكات نوعية وربط الفرص الواعدة بالجهات المناسبة بما يدعم التوسع المستدام داخل المملكة العربية السعودية.",
+    },
+    legalInfo: {
+      title: "البيانات النظامية",
+      commercialRegistration: "السجل التجاري",
+      vatNumber: "الرقم الضريبي",
+      demo: "بيانات تجريبية",
     },
   },
 };

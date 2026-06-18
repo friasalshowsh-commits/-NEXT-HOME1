@@ -1,84 +1,129 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
+import { motion, useInView, useMotionValue, useSpring, useTransform } from 'motion/react';
+import { useDevice } from '../hooks/useMediaQuery';
+import { useReducedMotion } from '../hooks/useReducedMotion';
+import { locations, CityLocation } from '../data/locations';
+import { TranslationSchema } from '../translations';
 
 interface SaudiCoverageMapProps {
   lang: 'ar' | 'en';
   mapAriaLabel: string;
   mapCaption: string;
+  currentTrans: TranslationSchema;
 }
 
 export const SaudiCoverageMap: React.FC<SaudiCoverageMapProps> = ({
   lang,
   mapAriaLabel,
-  mapCaption
+  mapCaption,
+  currentTrans,
 }) => {
-  // Coordinates based on viewBox="0 0 620 500"
-  const locations = [
-    {
-      id: 'riyadh',
-      x: 360,
-      y: 250,
-      type: 'headquarters',
-      nameAr: 'الرياض',
-      nameEn: 'Riyadh',
-      tagAr: 'المقر الرئيسي',
-      tagEn: 'HQ',
-      subAr: 'المركز الرئيسي والتنفيذي',
-      subEn: 'Executive HQ',
-      labelOffset: { x: 0, y: -45 }
-    },
-    {
-      id: 'jeddah',
-      x: 180,
-      y: 330,
-      type: 'market',
-      nameAr: 'جدة',
-      nameEn: 'Jeddah',
-      tagAr: 'تغطية تجارية',
-      tagEn: 'Market Access',
-      subAr: 'بوابة المنطقة الغربية',
-      subEn: 'Western Region Gateway',
-      labelOffset: { x: -30, y: 45 }
-    },
-    {
-      id: 'dammam',
-      x: 520,
-      y: 220,
-      type: 'market',
-      nameAr: 'الدمام',
-      nameEn: 'Dammam',
-      tagAr: 'وصول تجاري',
-      tagEn: 'Eastern Reach',
-      subAr: 'المنطقة الشرقية',
-      subEn: 'Eastern Province',
-      labelOffset: { x: 50, y: -45 }
-    },
-    {
-      id: 'khobar',
-      x: 540,
-      y: 245,
-      type: 'market',
-      nameAr: 'الخبر',
-      nameEn: 'Al Khobar',
-      tagAr: 'وصول تجاري',
-      tagEn: 'Eastern Reach',
-      subAr: 'بوابة الخليج العربي',
-      subEn: 'Gulf Business Portal',
-      labelOffset: { x: 50, y: 45 }
-    }
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, amount: 0.25 });
+  const { hasFinePointer, isTouch } = useDevice();
+  const isReduced = useReducedMotion();
+  const isRtl = lang === 'ar';
+
+  // State to track keyboard focus or touch tap
+  const [activeCityId, setActiveCityId] = useState<string | null>(null);
+
+  // 2.5D Pointer tilt effect values
+  const xVal = useMotionValue(0);
+  const yVal = useMotionValue(0);
+
+  const springX = useSpring(xVal, { stiffness: 90, damping: 20 });
+  const springY = useSpring(yVal, { stiffness: 90, damping: 20 });
+
+  // Map mouse percent to ±1.5deg rotation and ±3px translation
+  const rotateX = useTransform(springY, [-0.5, 0.5], [1.5, -1.5]);
+  const rotateY = useTransform(springX, [-0.5, 0.5], [-1.5, 1.5]);
+  const translateX = useTransform(springX, [-0.5, 0.5], [-3, 3]);
+  const translateY = useTransform(springY, [-0.5, 0.5], [-3, 3]);
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!hasFinePointer || isTouch || isReduced) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left - width / 2;
+    const mouseY = e.clientY - rect.top - height / 2;
+
+    xVal.set(mouseX / width);
+    yVal.set(mouseY / height);
+  };
+
+  const handlePointerLeave = () => {
+    xVal.set(0);
+    yVal.set(0);
+  };
+
+  const mapPath = 
+    "M 125 110 " +
+    "C 125 110, 150 90, 160 85 " +
+    "C 170 80, 185 70, 195 70 " +
+    "C 205 70, 220 100, 230 110 " +
+    "C 240 120, 255 125, 275 125 " +
+    "C 295 125, 335 150, 360 160 " +
+    "C 385 170, 420 170, 440 175 " +
+    "C 460 180, 485 195, 500 205 " +
+    "C 515 215, 520 220, 525 215 " +
+    "C 530 210, 532 215, 530 225 " +
+    "C 528 235, 538 235, 545 240 " +
+    "C 552 245, 560 250, 555 260 " +
+    "C 550 270, 555 278, 562 284 " +
+    "C 569 290, 578 300, 588 312 " +
+    "C 598 324, 600 335, 595 348 " +
+    "C 590 361, 580 405, 575 425 " +
+    "C 570 445, 540 448, 510 448 " +
+    "C 480 448, 450 440, 420 435 " +
+    "C 390 430, 360 425, 330 423 " +
+    "C 300 421, 265 445, 255 455 " +
+    "C 245 465, 238 468, 235 458 " +
+    "C 232 448, 240 435, 235 425 " +
+    "C 230 415, 225 400, 220 395 " +
+    "C 215 390, 205 380, 200 370 " +
+    "C 195 360, 190 348, 185 340 " +
+    "C 180 332, 175 320, 170 310 " +
+    "C 165 300, 155 285, 150 275 " +
+    "C 145 265, 135 250, 130 240 " +
+    "C 125 230, 115 210, 110 200 " +
+    "C 105 190, 95 175, 90 162 " +
+    "C 85 149, 80 135, 78 126 " +
+    "C 76 117, 85 110, 90 115 " +
+    "C 95 120, 105 125, 110 118 " +
+    "C 115 111, 125 110, 125 110 Z";
+
+  // Radiating connections details
+  const connectors = [
+    { targetId: 'jeddah', d: 'M 360 250 Q 255 285 180 330', delay: 1.0 },
+    { targetId: 'dammam', d: 'M 360 250 Q 450 220 520 220', delay: 1.2 },
+    { targetId: 'khobar', d: 'M 360 250 Q 460 260 540 245', delay: 0.9 },
   ];
 
-  // Fine curved connector paths radiating from Riyadh (HQ) to other regions
-  const connectors = [
-    { targetId: 'jeddah', d: 'M 360 250 Q 255 285 180 330' },
-    { targetId: 'dammam', d: 'M 360 250 Q 450 220 520 220' },
-    { targetId: 'khobar', d: 'M 360 250 Q 460 260 540 245' }
-  ];
+  // Specific milestone delays for markers appearance
+  const cityDelays: Record<string, number> = {
+    riyadh: 0.8,
+    jeddah: 1.5,
+    dammam: 1.7,
+    khobar: 1.4,
+  };
+
+  const use3DTilt = hasFinePointer && !isTouch && !isReduced;
 
   return (
-    <div className="w-full flex flex-col items-center select-none" id="saudi-coverage-map-root">
-      {/* Interactive responsive SVG stage */}
-      <div 
+    <div className="w-full flex flex-col items-center select-none" id="saudi-coverage-map-root" ref={containerRef}>
+      {/* 2.5D Perspective Container */}
+      <motion.div 
+        onPointerMove={handlePointerMove}
+        onPointerLeave={handlePointerLeave}
         className="relative w-full max-w-[520px] aspect-[1.24/1] bg-white rounded-2xl border border-[#DCE5E0]/60 p-4 md:p-6 shadow-xs overflow-hidden"
+        style={{
+          perspective: 1100,
+          rotateX: use3DTilt ? rotateX : 0,
+          rotateY: use3DTilt ? rotateY : 0,
+          x: use3DTilt ? translateX : 0,
+          y: use3DTilt ? translateY : 0,
+        }}
         role="img"
         aria-label={mapAriaLabel}
       >
@@ -88,58 +133,35 @@ export const SaudiCoverageMap: React.FC<SaudiCoverageMapProps> = ({
           fill="none" 
           xmlns="http://www.w3.org/2000/svg"
         >
-          {/* Defs for gradients, patterns, shadows, and animations */}
           <defs>
             {/* Soft inner map glow */}
             <filter id="map-shadow" x="-5%" y="-5%" width="110%" height="110%">
               <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#07583F" floodOpacity="0.04" />
             </filter>
             
-            {/* Animated dashed line pulse effect */}
+            {/* Connector line gradient */}
             <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#07583F" stopOpacity="0.6" />
-              <stop offset="50%" stopColor="#5F9E86" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#5F9E86" stopOpacity="0.85" />
               <stop offset="100%" stopColor="#07583F" stopOpacity="0.6" />
             </linearGradient>
           </defs>
 
-          {/* High Fidelity Simplified Saudi Arabia Outline Path */}
-          <path 
-            d="M 125 110 
-               C 125 110, 150 90, 160 85 
-               C 170 80, 185 70, 195 70 
-               C 205 70, 220 100, 230 110 
-               C 240 120, 255 125, 275 125 
-               C 295 125, 335 150, 360 160 
-               C 385 170, 420 170, 440 175 
-               C 460 180, 485 195, 500 205 
-               C 515 215, 520 220, 525 215 
-               C 530 210, 532 215, 530 225 
-               C 528 235, 538 235, 545 240 
-               C 552 245, 560 250, 555 260 
-               C 550 270, 555 278, 562 284 
-               C 569 290, 578 300, 588 312 
-               C 598 324, 600 335, 595 348 
-               C 590 361, 580 405, 575 425 
-               C 570 445, 540 448, 510 448 
-               C 480 448, 450 440, 420 435 
-               C 390 430, 360 425, 330 423 
-               C 300 421, 265 445, 255 455 
-               C 245 465, 238 468, 235 458 
-               C 232 448, 240 435, 235 425 
-               C 230 415, 225 400, 220 395 
-               C 215 390, 205 380, 200 370 
-               C 195 360, 190 348, 185 340 
-               C 180 332, 175 320, 170 310 
-               C 165 300, 155 285, 150 275 
-               C 145 265, 135 250, 130 240 
-               C 125 230, 115 210, 110 200 
-               C 105 190, 95 175, 90 162 
-               C 85 149, 80 135, 78 126 
-               C 76 117, 85 110, 90 115 
-               C 95 120, 105 125, 110 118 
-               C 115 111, 125 110, 125 110 Z" 
-            fill="#F2F6F3" 
+          {/* High Fidelity Saudi Arabia Outline Path */}
+          <motion.path 
+            d={mapPath} 
+            initial={{ pathLength: 0, fill: 'rgba(242, 246, 243, 0)' }}
+            animate={
+              isReduced
+                ? { pathLength: 1, fill: '#F2F6F3' }
+                : (isInView 
+                    ? { pathLength: 1, fill: '#F2F6F3' } 
+                    : { pathLength: 0, fill: 'rgba(242, 246, 243, 0)' })
+            }
+            transition={{
+              pathLength: { duration: 1.1, ease: 'easeOut' },
+              fill: { delay: 0.5, duration: 0.7, ease: 'easeInOut' }
+            }}
             stroke="#BFD5CA" 
             strokeWidth="2.5" 
             strokeLinejoin="round" 
@@ -148,74 +170,146 @@ export const SaudiCoverageMap: React.FC<SaudiCoverageMapProps> = ({
 
           {/* Delicate Regional Curved Connections */}
           {connectors.map((conn) => (
-            <path 
+            <motion.path 
               key={conn.targetId}
               d={conn.d} 
               stroke="url(#line-gradient)" 
               strokeWidth="1.8" 
               strokeDasharray="5 4" 
               className="opacity-75"
+              initial={{ pathLength: 0 }}
+              animate={isReduced ? { pathLength: 1 } : (isInView ? { pathLength: 1 } : { pathLength: 0 })}
+              transition={{
+                delay: isReduced ? 0 : conn.delay,
+                duration: 0.7,
+                ease: 'easeOut'
+              }}
             />
           ))}
 
-          {/* Pulsing visual waves behind HQ Riyadh */}
-          <circle cx="360" cy="250" r="18" className="fill-none stroke-[#07583F]/20 stroke-1 animate-[ping_2.5s_infinite]" />
-          <circle cx="360" cy="250" r="10" className="fill-[#07583F]/8" />
+          {/* Riyadh Headquarters single pulse aura */}
+          {isInView && !isReduced && (
+            <motion.circle 
+              cx="360" 
+              cy="250" 
+              r="22" 
+              className="fill-none stroke-[#07583F]/30 stroke-1"
+              initial={{ scale: 0, opacity: 0.8 }}
+              animate={{ scale: 1.25, opacity: 0 }}
+              transition={{
+                delay: 0.8,
+                duration: 1.4,
+                ease: 'easeOut',
+                repeat: 0,
+              }}
+            />
+          )}
 
-          {/* City Nodes */}
+          {/* Interactive City Node Markers */}
           {locations.map((loc) => {
             const isHq = loc.type === 'headquarters';
+            const isActive = activeCityId === loc.id;
+            const markerDelay = cityDelays[loc.id] || 0.8;
+
             return (
-              <g key={loc.id} className="cursor-pointer group">
+              <g 
+                key={loc.id} 
+                className="cursor-pointer group"
+                onClick={() => setActiveCityId(activeCityId === loc.id ? null : loc.id)}
+              >
                 {/* Visual node anchor point */}
-                <circle 
+                <motion.circle 
                   cx={loc.x} 
                   cy={loc.y} 
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={
+                    isReduced 
+                      ? { scale: 1, opacity: 1 } 
+                      : (isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 })
+                  }
+                  transition={{
+                    delay: isReduced ? 0 : markerDelay,
+                    duration: 0.45,
+                    ease: 'easeOut'
+                  }}
                   r={isHq ? 8 : 6} 
                   fill={isHq ? '#07583F' : '#7FA997'} 
                   stroke="#FFFFFF" 
                   strokeWidth="2"
-                  className="shadow-xs transition-all duration-300 group-hover:scale-125"
+                  className="shadow-xs transition-transform duration-300 group-hover:scale-125"
+                  id={`map-node-dot-${loc.id}`}
                 />
                 
-                {/* Highlight ring on hover */}
+                {/* Highlight ring on hover / active */}
                 <circle 
                   cx={loc.x} 
                   cy={loc.y} 
                   r={isHq ? 14 : 11} 
                   stroke={isHq ? '#07583F' : '#7FA997'} 
                   strokeWidth="1.5" 
-                  className="opacity-0 group-hover:opacity-40 transition-opacity duration-300 fill-none"
+                  className={`transition-opacity duration-300 fill-none ${
+                    isActive ? 'opacity-60' : 'opacity-0 group-hover:opacity-40'
+                  }`}
+                  id={`map-node-highlight-${loc.id}`}
                 />
               </g>
             );
           })}
         </svg>
 
-        {/* Absolute-positioned clean HTML labels to avoid SVG wrapping/responsiveness issues */}
+        {/* Premium HTML labels/tooltips overlapping perfectly without scalability issues */}
         {locations.map((loc) => {
           const isHq = loc.type === 'headquarters';
-          const name = lang === 'ar' ? loc.nameAr : loc.nameEn;
-          const tag = lang === 'ar' ? loc.tagAr : loc.tagEn;
-          const sub = lang === 'ar' ? loc.subAr : loc.subEn;
-
-          // Align settings based on offsets
-          const isLtr = lang === 'en';
+          const name = currentTrans.expansion.cities[loc.nameKey];
+          const sub = currentTrans.expansion.cities[loc.subKey];
+          const tag = isHq 
+            ? (lang === 'ar' ? 'المقر الرئيسي' : 'HQ') 
+            : (lang === 'ar' ? 'وصول تجاري' : 'Reach');
           
+          const markerDelay = cityDelays[loc.id] || 0.8;
+          const isActive = activeCityId === loc.id;
+
           return (
-            <div 
+            <motion.div 
               key={loc.id}
-              className="absolute pointer-events-none transition-transform duration-300 hover:scale-[1.03]"
+              tabIndex={0}
+              role="button"
+              aria-label={`${name}, ${tag} - ${sub}`}
+              onFocus={() => setActiveCityId(loc.id)}
+              onBlur={() => setActiveCityId(null)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  setActiveCityId(activeCityId === loc.id ? null : loc.id);
+                }
+              }}
+              initial={{ opacity: 0, y: 10 }}
+              animate={
+                isReduced
+                  ? { opacity: 1, y: 0 }
+                  : (isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 })
+              }
+              transition={{
+                delay: isReduced ? 0 : markerDelay + 0.15,
+                duration: 0.5,
+                ease: 'easeOut',
+              }}
+              className="absolute group/label transition-all duration-300"
               style={{
-                // Map coordinates (0-620 x 0-500) translated to percentage of container
                 left: `${(loc.x / 620) * 100}%`,
                 top: `${(loc.y / 500) * 100}%`,
                 transform: `translate(-50%, -50%) translate(${loc.labelOffset.x}px, ${loc.labelOffset.y}px)`,
+                zIndex: isHq ? 30 : 25,
               }}
+              id={`map-label-wrapper-${loc.id}`}
             >
               <div 
-                className={`flex flex-col bg-white/95 backdrop-blur-xs border border-[#DCE5E0] rounded-lg px-2.5 py-1.5 shadow-sm text-center min-w-[125px]`}
-                style={{ direction: lang === 'ar' ? 'rtl' : 'ltr' }}
+                className={`flex flex-col bg-white/95 backdrop-blur-xs border transition-all duration-300 rounded-lg px-2.5 py-1.5 shadow-sm text-center min-w-[125px] ${
+                  isActive 
+                    ? 'border-[#07583F] ring-1 ring-[#07583F] scale-[1.04]' 
+                    : 'border-[#DCE5E0] hover:border-[#07583F]/40 hover:translate-y-[-3px] hover:scale-[1.02]'
+                }`}
+                style={{ direction: isRtl ? 'rtl' : 'ltr' }}
+                id={`map-tooltip-content-${loc.id}`}
               >
                 {/* Header line with Name and Tag */}
                 <div className="flex items-center justify-between gap-1">
@@ -236,13 +330,13 @@ export const SaudiCoverageMap: React.FC<SaudiCoverageMapProps> = ({
                   {sub}
                 </span>
               </div>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
 
       {/* Understated caption beneath map */}
-      <div className="mt-3 text-center">
+      <div className="mt-4 text-center">
         <span className="text-xs font-semibold text-[#626B66]">
           {mapCaption}
         </span>
