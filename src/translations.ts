@@ -181,6 +181,7 @@ export interface TranslationSchema {
     communicationLabel: string;
     companyLocation: string;
     commercialRegistrationLabel: string;
+    mktGrowth: string;
   };
   leadership: {
     label: string;
@@ -217,7 +218,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       badge: "SAUDI STRATEGIC GROWTH COMPANY",
       title: "Building Growth Opportunities in the Saudi Market",
       titleLines: ["We build.", "We grow.", "We empower."],
-      paragraph: "A premier Saudi enterprise specializing in business development, building strategic partnerships, and enabling companies to access growth and expansion opportunities inside the Saudi market.",
+      paragraph: "A Saudi business development and commercial growth company helping companies and brands enter and expand across the Saudi market.",
       cta: "Discover More",
       cta_services: "Explore Our Services",
       cta_contact: "Contact Us",
@@ -226,13 +227,14 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       eyebrow: "About the Company",
       title: "We Open the Doors to Growth and Opportunities",
       paragraphs: [
-        "NEXT HOME is a premier Saudi business group dedicated to business development, strategic partnerships, and enabling companies to capture real opportunities inside the Kingdom.",
-        "We operate as a trusted institutional bridge, helping regional and international brands navigate regulations, build powerful alliances, and execute high-value expansions with full agility."
+        "NEXT HOME is a Saudi company specializing in business development, commercial growth, and strategic partnerships. We work with companies and brands across multiple sectors to support market entry, develop sales and marketing channels, and build sustainable expansion opportunities.",
+        "We do not rely on one-size-fits-all or sector-restricted solutions. We build a strategy for each product or service based on its market, customers, and commercial opportunity."
       ],
       bullets: [
-        "Deep understanding of the Saudi market and its strategic needs.",
-        "A vast, elite network of relationships across high-growth sectors.",
-        "A specialized professional team with over 16 years of hands-on expertise."
+        "Deep understanding of the Saudi market.",
+        "Tailored solutions by product and sector.",
+        "Multi-sector relationship network.",
+        "Execution from strategy to market access."
       ],
       cta: "More About the Company",
       imageAlt: "Saudi business meeting in a modern corporate environment"
@@ -257,20 +259,20 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       title: "How We Work",
       steps: [
         {
-          title: "Business Development",
-          description: "We help companies discover growth opportunities and build practical expansion pathways inside the Saudi market."
+          title: "Opportunity Discovery",
+          description: "We understand the product or service, analyze the market and audience, and identify the most realistic growth opportunities."
         },
         {
-          title: "Strategic Partnerships",
-          description: "We build long-term relationships and partnerships between businesses, investors, and suitable commercial entities."
+          title: "Strategy Formulation",
+          description: "We turn the opportunity into a clear strategy covering positioning, marketing, sales, and partnerships."
         },
         {
           title: "Market Access",
-          description: "We support companies entering the Saudi market by understanding the commercial landscape and building the right network of relations."
+          description: "We build market-entry and access channels, connecting the company with the right customers, partners, and stakeholders."
         },
         {
-          title: "Real Estate Marketing",
-          description: "Developing and marketing real estate projects and connecting them with target clients and partners."
+          title: "Marketing & Sales Development",
+          description: "We develop marketing and sales strategies suited to the product, market, and audience, and translate them into measurable execution."
         }
       ]
     },
@@ -282,32 +284,32 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
         {
           id: "bus-dev",
           title: "Business Development",
-          description: "Discovering growth opportunities, building key capabilities, and creating sustainable growth pathways.",
+          description: "We identify growth opportunities, develop expansion models, and turn commercial potential into executable plans.",
         },
         {
           id: "partnerships",
           title: "Strategic Partnerships",
-          description: "Forging long-term alliances that open key markets, expand corporate reach, and create mutual investment value.",
+          description: "We build strategic relationships connecting companies with institutions, investors, and partners capable of supporting growth.",
         },
         {
           id: "market-entry",
           title: "Saudi Market Entry",
-          description: "Complete regulatory, operational, and strategic support to successfully enter the Saudi commercial landscape.",
+          description: "We help local and international companies understand the Saudi market, identify opportunities, and build the right market-entry path.",
         },
         {
           id: "marketing-expansion",
-          title: "Marketing & Expansion",
-          description: "High-impact marketing and growth strategies designed to effectively reach target audiences and investors.",
+          title: "Marketing & Growth Strategies",
+          description: "We design marketing and growth strategies for products, services, and brands, tailored to each sector and target audience.",
         },
         {
           id: "real-estate",
-          title: "Real Estate Opportunities",
-          description: "Identifying and positioning high-yield real estate projects with strategic corporate entities.",
+          title: "Sales & Channel Development",
+          description: "We develop sales journeys, distribution channels, and practical routes to customers and partners.",
         },
         {
           id: "commercial-rep",
-          title: "Commercial Representation",
-          description: "Serving as local representatives to build immediate and powerful commercial presence.",
+          title: "Opportunity & Project Development",
+          description: "We assess commercial and investment opportunities and help transform them into scalable, executable projects.",
         },
       ],
       collapseDetails: "Collapse Details",
@@ -316,7 +318,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
     expansion: {
       sectionBadge: "STRATEGIC EXPANSION",
       title: "A Regional Vision. A Saudi Foundation.",
-      paragraph: "Headquartered in Riyadh, NEXT HOME builds strategic relationships across high-growth sectors, with an unwavering focus on deep market access, trusted high-tier partnerships, and long-term commercial value.",
+      paragraph: "From Riyadh, we help companies and brands access key markets across the Kingdom and build commercial relationships and channels that support marketing, sales, and expansion.",
       cta: "Our Footprint",
       cities: {
         riyadh: "Riyadh",
@@ -355,8 +357,8 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       ]
     },
     quote: {
-      text: "“We do not look for suppliers. We build long-term strategic partnerships.”",
-      author: "NEXT HOME EXECUTIVE BOARD",
+      text: "“From Product to Market. From Market to Growth.”",
+      author: "We build an integrated growth path that begins with understanding the opportunity, moves through marketing, sales, and partnerships, and ends with executable, measurable growth.",
       cta: "Start Partnership With Us"
     },
     whyPartner: {
@@ -365,27 +367,27 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       items: [
         {
           title: "Deep Market Insight",
-          description: "Deep, unmatched experience in navigating Saudi regulatory, financial, and business development landscapes with precision.",
+          description: "Deep experience in reading the commercial environment, regulatory frameworks, and customer behavior inside Saudi Arabia.",
         },
         {
-          title: "Proven Track Record",
-          description: "Consistent execution, premium operational standards, and complete dedication to high-value executive outcomes.",
+          title: "Multi-Sector Solutions",
+          description: "We develop strategies tailored to the nature of each product or service rather than imposing a single model on all.",
+        },
+        {
+          title: "Connected Marketing & Sales",
+          description: "We connect marketing directly with sales and access channels so that customer interest translates into actual business results.",
         },
         {
           title: "Strong Network",
-          description: "Direct elite access to local decision makers, family offices, sovereign entities, and institutional market leaders.",
+          description: "We establish practical connections with strategic partners, organizations, investors, and decision makers.",
         },
         {
           title: "Tailored Strategy",
-          description: "Custom strategic growth plans built systematically to address unique capabilities and market access opportunities.",
+          description: "We design a custom plan for each opportunity based on its specific goals, target markets, and growth stage.",
         },
         {
-          title: "Long-Term Value",
-          description: "A relentless corporate focus on creating sustainable future-proof growth and reciprocal partnership values.",
-        },
-        {
-          title: "Executive Execution",
-          description: "Agile, direct leadership management of critical milestones by expert Saudi and international corporate executives.",
+          title: "Direct Execution",
+          description: "We transition seamlessly from assessment and planning directly to implementation, monitoring, and measurable performance.",
         },
       ],
       imageAlt: "A strategic partnership meeting between Saudi business leaders in a modern corporate environment"
@@ -460,7 +462,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       ]
     },
     footer: {
-      tagline: "Connecting opportunities, developing high-value partnerships, and building real-world growth pillars across the Kingdom of Saudi Arabia.",
+      tagline: "A Saudi business development and commercial growth company helping companies and brands enter and expand across the Saudi market.",
       allRightsReserved: "© 2026 NEXT HOME. All rights reserved.",
       quickLinks: "Corporate Overview",
       legalLink: "Discreet Governance & Compliance Policy",
@@ -469,6 +471,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       communicationLabel: "Communication Center",
       companyLocation: "Saudi Arabia • Riyadh",
       commercialRegistrationLabel: "Commercial Registration",
+      mktGrowth: "Marketing & Commercial Growth",
     },
     leadership: {
       label: "Leadership",
@@ -503,7 +506,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       badge: "شركة سعودية للنمو الاستراتيجي",
       title: "نبني فرص النمو في السوق السعودي",
       titleLines: ["نبني.", "ننمو.", "نُمكّن."],
-      paragraph: "شركة سعودية متخصصة في تطوير الأعمال وبناء الشراكات الاستراتيجية وتمكين الشركات من الوصول إلى فرص النمو والتوسع داخل السوق السعودي.",
+      paragraph: "شركة سعودية لتطوير الأعمال والنمو التجاري وبناء الشراكات، تساعد الشركات والعلامات التجارية على دخول السوق السعودي والتوسع في مختلف القطاعات.",
       cta: "اكتشف المزيد",
       cta_services: "اكتشف خدماتنا",
       cta_contact: "تواصل معنا",
@@ -512,13 +515,14 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       eyebrow: "عن الشركة",
       title: "نحن نفتح الأبواب للنمو والفرص",
       paragraphs: [
-        "تعد نيكست هوم بمثابة مجموعة أعمال سعودية رائدة متخصصة في تطوير الأعمال وصياغة الشراكات الاستراتيجية الفاعلة وتمكين المؤسسات من الوصول إلى فرص حقيقية للنمو والاستقرار داخل المملكة.",
-        "نعمل كجسر مؤسسي موثوق لمساعدة العلامات التجارية والشركات الكبرى على التنقل المرن في السوق المحلي، وبناء علاقات متينة، وتنفيذ توسعات حيوية تتطابق مع المحركات الاقتصادية الوطنية."
+        "NEXT HOME شركة سعودية متخصصة في تطوير الأعمال والنمو التجاري وبناء الشراكات. نعمل مع الشركات والعلامات التجارية في مختلف القطاعات لمساعدتها على دخول السوق السعودي، تطوير قنوات التسويق والمبيعات، وبناء فرص توسع مستدامة.",
+        "لا نعتمد حلولاً جاهزة أو مرتبطة بقطاع واحد؛ بل نبني لكل منتج أو خدمة استراتيجية تتناسب مع السوق والعملاء وطبيعة الفرصة."
       ],
       bullets: [
-        "فهم عميق للسوق السعودي واحتياجاته الاستراتيجية.",
-        "شبكة علاقات واسعة ونخبوية في مختلف القطاعات الحيوية.",
-        "فريق عمل متخصص بخبرة عملية قوية وعميقة تمتد لأكثر من ١٦ عامًا."
+        "فهم عميق للسوق السعودي.",
+        "حلول مصممة حسب المنتج والقطاع.",
+        "شبكة علاقات متعددة القطاعات.",
+        "تنفيذ من الاستراتيجية إلى الوصول للسوق."
       ],
       cta: "المزيد عن الشركة",
       imageAlt: "اجتماع أعمال سعودي في بيئة مؤسسية حديثة"
@@ -543,20 +547,20 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       title: "كيف نعمل",
       steps: [
         {
-          title: "تطوير الأعمال",
-          description: "نساعد الشركات على اكتشاف فرص النمو وبناء مسارات توسع عملية داخل السوق السعودي."
+          title: "اكتشاف الفرصة",
+          description: "نفهم المنتج أو الخدمة، نحلل السوق والجمهور، ونحدد فرص النمو الأكثر واقعية."
         },
         {
-          title: "الشراكات الاستراتيجية",
-          description: "نبني علاقات وشراكات طويلة الأمد بين الشركات والمستثمرين والجهات التجارية المناسبة."
+          title: "بناء الاستراتيجية",
+          description: "نحوّل الفرصة إلى خطة واضحة تشمل التموضع، التسويق، المبيعات، والشراكات."
         },
         {
           title: "الوصول إلى السوق",
-          description: "ندعم دخول الشركات إلى السوق السعودي عبر فهم البيئة التجارية وبناء شبكة العلاقات المناسبة."
+          description: "نبني قنوات الدخول والوصول، ونربط الشركة بالعملاء والشركاء والجهات المناسبة."
         },
         {
-          title: "التسويق العقاري",
-          description: "تطوير وتسويق المشاريع العقارية وربطها بالعملاء والشركاء المستهدفين."
+          title: "التسويق وتطوير المبيعات",
+          description: "نطوّر استراتيجيات تسويق ومبيعات تناسب المنتج والسوق والجمهور، ونحوّلها إلى تنفيذ قابل للقياس."
         }
       ]
     },
@@ -568,32 +572,32 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
         {
           id: "bus-dev",
           title: "تطوير الأعمال",
-          description: "نساعد الشركات على اكتشاف فرص النمو وبناء مسارات توسع عملية داخل السوق السعودي.",
+          description: "نكتشف فرص النمو، ونبني نماذج التوسع، ونحوّل الإمكانات التجارية إلى خطط قابلة للتنفيذ.",
         },
         {
           id: "partnerships",
-          title: "بناء الشراكات",
-          description: "تأسيس تحالفات متينة ومستدامة تتيح دخول أسواق حيوية، وتوسع نطاق الوصول، وتصنع قيمًا متبادلة.",
+          title: "الشراكات الاستراتيجية",
+          description: "نبني علاقات وشراكات تربط الشركات بالجهات والمستثمرين والشركاء القادرين على دعم النمو.",
         },
         {
           id: "market-entry",
           title: "دخول السوق السعودي",
-          description: "مرافقة ودعم العلامات التجارية والمستثمرين الإقليميين والدوليين في دخول السوق السعودي بنجاح وثقة.",
+          description: "نساعد الشركات المحلية والدولية على فهم السوق السعودي، تحديد الفرص، وبناء مسار دخول مناسب.",
         },
         {
           id: "marketing-expansion",
-          title: "التسويق والتوسع",
-          description: "استراتيجيات تسويق وحلول نمو مصممة للوصول بفعالية إلى الجمهور والمستهدفين والمستثمرين.",
+          title: "استراتيجيات التسويق والنمو",
+          description: "نصمم استراتيجيات تسويق ونمو للمنتجات والخدمات والعلامات التجارية بما يتناسب مع طبيعة كل قطاع وجمهوره.",
         },
         {
           id: "real-estate",
-          title: "الفرص العقارية",
-          description: "توفير وتسويق الفرص والمشاريع العقارية الواعدة وربطها بالعملاء والمستثمرين الاستراتيجيين.",
+          title: "تطوير المبيعات والقنوات",
+          description: "نبني مسارات البيع، قنوات التوزيع، وآليات الوصول إلى العملاء والشركاء.",
         },
         {
           id: "commercial-rep",
-          title: "التمثيل التجاري",
-          description: "تمثيل الشركات محليًا وبناء حضور سريع وقوي للشركات العالمية داخل السوق السعودي.",
+          title: "تطوير الفرص والمشاريع",
+          description: "ندرس الفرص التجارية والاستثمارية ونساعد على تحويلها إلى مشاريع قابلة للنمو والتنفيذ.",
         },
       ],
       collapseDetails: "عرض أقل",
@@ -602,7 +606,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
     expansion: {
       sectionBadge: "التوسع الاستراتيجي",
       title: "رؤية توسعية. وقاعدة سعودية راسخة.",
-      paragraph: "انطلاقًا من عاصمتنا الرياض، تبني نيكست هوم علاقات استراتيجية وثيقة في قطاعات اقتصادية عالية النمو، مع تركيز دائم وحثيث على تسهيل الوصول إلى السوق، ونسج الشراكات الموثوقة، وتوليد القيمة التجارية طويلة المدى.",
+      paragraph: "انطلاقًا من الرياض، نساعد الشركات والعلامات التجارية على الوصول إلى الأسواق الرئيسية في المملكة، وبناء علاقات وقنوات تجارية تدعم التسويق والمبيعات والتوسع.",
       cta: "نطاق عملنا",
       cities: {
         riyadh: "الرياض",
@@ -641,8 +645,8 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       ]
     },
     quote: {
-      text: "«نحن لا نبحث عن موردين تقليديين للخدمات والمواد. بل نكرس جهودنا لبناء شراكات استراتيجية متكاملة طويلة الأجل.»",
-      author: "المجلس التنفيذي لـ نيكست هوم",
+      text: "«من المنتج إلى السوق. ومن السوق إلى النمو.»",
+      author: "نبني للشركات مسارًا متكاملًا يبدأ بفهم الفرصة، ويمر بالتسويق والمبيعات والشراكات، وينتهي بنمو قابل للتنفيذ والقياس.",
       cta: "ابدأ شراكة معنا"
     },
     whyPartner: {
@@ -651,27 +655,27 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       items: [
         {
           title: "فهم عميق للسوق",
-          description: "خبرة سعودية عميقة وإلمام تام بالبيئة التنظيمية والتنافسية ومسارات تطوير الأعمال داخل المملكة.",
+          description: "خبرة في قراءة البيئة التجارية والتنظيمية وسلوك العملاء داخل المملكة.",
         },
         {
-          title: "سجل عملي موثوق",
-          description: "تاريخ متميز من الالتزام، وتنفيذ عالي الجودة يتطابق مع أعلى معايير الشركات التنفيذية العالمية.",
+          title: "حلول متعددة القطاعات",
+          description: "نطوّر استراتيجيات تناسب طبيعة كل منتج أو خدمة بدل فرض نموذج واحد على الجميع.",
+        },
+        {
+          title: "تسويق ومبيعات مترابطان",
+          description: "نربط التسويق بالمبيعات وقنوات الوصول حتى يتحول الاهتمام إلى نتائج تجارية.",
         },
         {
           title: "شبكة علاقات قوية",
-          description: "تواصل مباشر ورفيع المستوى مع صناع القرار، المكاتب العائلية الكبرى، والمؤسسات الاستثمارية الفاعلة.",
+          description: "نبني روابط عملية مع الشركاء والجهات والمستثمرين وصناع القرار.",
         },
         {
-          title: "استراتيجية مصممة خصيصاً",
-          description: "تصميم وتنفيذ خطط عمل خاصة تلائم مقومات وميزات كل فرصة استثمارية وتجارية بدقة متناهية.",
+          title: "استراتيجية مصممة خصيصًا",
+          description: "نصمم لكل فرصة خطة تتناسب مع أهدافها وسوقها ومرحلة نموها.",
         },
         {
-          title: "قيمة طويلة المدى",
-          description: "التزام راسخ بتوليد العوائد والسمعة والنمو المتوازن عبر شراكات مرنة مستدامة للمستقبل.",
-        },
-        {
-          title: "تنفيذ احترافي مباشر",
-          description: "إشراف قيادي مباشر من قبل نخبة من المديرين التنفيذيين المحليين والدوليين لضمان دقة التنفيذ السريع.",
+          title: "تنفيذ مباشر",
+          description: "ننتقل من الدراسة والتخطيط إلى التنفيذ والمتابعة وقياس النتائج.",
         },
       ],
       imageAlt: "اجتماع شراكة استراتيجية بين رجال أعمال سعوديين في بيئة مؤسسية حديثة"
@@ -746,15 +750,16 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       ]
     },
     footer: {
-      tagline: "ربط الفرص الاستثمارية الحقيقية، وصياغة الشراكات الاستراتيجية النخبوية، وتشييد دعائم التنمية المستدامة للأعمال في مختلف ربوع المملكة.",
+      tagline: "شركة سعودية لتطوير الأعمال والنمو التجاري وبناء الشراكات، تساعد الشركات والعلامات التجارية على دخول السوق السعودي والتوسع في مختلف القطاعات.",
       allRightsReserved: "© ٢٠٢٦ نيكست هوم. جميع الحقوق محفوظة.",
       quickLinks: "الرؤية والسياسة المؤسسية",
       legalLink: "الحوكمة والامتثال وسياسة الخصوصية السرية للشركاء",
       businessAreasLabel: "مجالات الأعمال",
-      corporateInfoLabel: "معلومات الشركة",
+      corporateInfoLabel: "معلومات الشركة center",
       communicationLabel: "الاتصال والخدمات",
       companyLocation: "المملكة العربية السعودية • الرياض",
       commercialRegistrationLabel: "السجل التجاري",
+      mktGrowth: "التسويق والنمو التجاري",
     },
     leadership: {
       label: "الإدارة",

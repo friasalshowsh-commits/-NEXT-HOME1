@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronRight, TrendingUp, Handshake, Globe, Workflow, Building, Shield } from 'lucide-react';
+import { ChevronRight, TrendingUp, Handshake, Globe, Workflow, Megaphone, Route, BriefcaseBusiness } from 'lucide-react';
 import { TranslationSchema } from '../../translations';
 import { InteractiveTiltCard } from '../interactive/InteractiveTiltCard';
 
@@ -23,9 +23,9 @@ export const BusinessAreasSection: React.FC<BusinessAreasSectionProps> = ({
       case 'bus-dev': return <TrendingUp className={baseClass} id="icon-bus-dev" />;
       case 'partnerships': return <Handshake className={baseClass} id="icon-partnerships" />;
       case 'market-entry': return <Globe className={baseClass} id="icon-market-entry" />;
-      case 'marketing-expansion': return <Workflow className={baseClass} id="icon-marketing-expansion" />;
-      case 'real-estate': return <Building className={baseClass} id="icon-real-estate" />;
-      case 'commercial-rep': return <Shield className={baseClass} id="icon-commercial-rep" />;
+      case 'marketing-expansion': return <Megaphone className={baseClass} id="icon-marketing-expansion" />;
+      case 'real-estate': return <Route className={baseClass} id="icon-sales-channels" />;
+      case 'commercial-rep': return <BriefcaseBusiness className={baseClass} id="icon-opportunities" />;
       default: return <Workflow className={baseClass} id="icon-default-workflow" />;
     }
   };
@@ -71,49 +71,49 @@ export const BusinessAreasSection: React.FC<BusinessAreasSectionProps> = ({
                       {area.id === 'bus-dev' && (
                         <>
                           <p className="text-saudi font-bold uppercase tracking-wider">{lang === 'ar' ? 'مخرجاتنا الرئيسية:' : 'Key Deliverables:'}</p>
-                          <p>• {lang === 'ar' ? 'نماذج جدوى شاملة متوافقة مع مبارات رؤية السعودية 2030.' : 'Comprehensive feasibility models matching Saudi Vision 2030 initiatives.'}</p>
-                          <p>• {lang === 'ar' ? 'صياغة وهندسة المشاريع المشتركة والتفاوض مع كبار الشركاء.' : 'Joint venture configuration and negotiation with major stakeholders.'}</p>
-                          <p>• {lang === 'ar' ? 'تهيئة وتصميم نماذج الأعمال لأقصى درجات المرونة في السوق السعودي.' : 'Structuring and streamlining business models for Saudi market agility.'}</p>
+                          <p>• {lang === 'ar' ? 'دراسات جدوى متكاملة لتهيئة نموذج العمل وتسهيل مرونة التوسع.' : 'Comprehensive feasibility studies to structure agile business models.'}</p>
+                          <p>• {lang === 'ar' ? 'هندسة المشاريع المشتركة والتحالفات بما يدعم مستهدفات النمو النخبوية.' : 'Joint venture and alliance engineering aligned with elite growth paths.'}</p>
+                          <p>• {lang === 'ar' ? 'رسم خارطة طريق تجارية متكاملة لتحقيق الأهداف الاستراتيجية في الكفاءة.' : 'Structured commercial roadmaps to achieve strategic expansion efficiency.'}</p>
                         </>
                       )}
                       {area.id === 'partnerships' && (
                         <>
                           <p className="text-saudi font-bold uppercase tracking-wider">{lang === 'ar' ? 'مخرجاتنا الرئيسية:' : 'Key Deliverables:'}</p>
-                          <p>• {lang === 'ar' ? 'ربط مثالي مع كبار المستثمرين والشركاء التجاريين الملائمين.' : 'Aligning high-net-worth individuals and corporate champions.'}</p>
-                          <p>• {lang === 'ar' ? 'صياغة مواثيق التحالف الاستراتيجي الطويلة الأجل وأطر الحوكمة.' : 'Drafting long-term alliance charters and secure governance frameworks.'}</p>
-                          <p>• {lang === 'ar' ? 'تحقيق تكامل شبكي واسع النطاق لتسريع توليد القيمة المشتركة.' : 'Broad market network integration for accelerated strategic value.'}</p>
+                          <p>• {lang === 'ar' ? 'ربط الشركات بالمستثمرين الاستراتيجيين وكبار الشركاء التجاريين.' : 'Connecting businesses with strategic investors and optimal partners.'}</p>
+                          <p>• {lang === 'ar' ? 'إعداد وبناء مواثيق التحالف وأطر الحوكمة الفعالة لضمان الاستدامة.' : 'Establishing alliance charters and reliable governance frameworks.'}</p>
+                          <p>• {lang === 'ar' ? 'تفعيل المبادرات المشتركة لتسريع توليد القيمة وحفظ مصالح الكيانات.' : 'Executing joint initiatives to accelerate value creation and protect mutual interests.'}</p>
                         </>
                       )}
                       {area.id === 'market-entry' && (
                         <>
                           <p className="text-saudi font-bold uppercase tracking-wider">{lang === 'ar' ? 'مخرجاتنا الرئيسية:' : 'Key Deliverables:'}</p>
-                          <p>• {lang === 'ar' ? 'إرشاد تنظيمي متكامل تحت منصات MISA والجهات الحيوية الأخرى.' : 'Complete regulatory navigation under SAGIA, MISA, and industrial zones.'}</p>
-                          <p>• {lang === 'ar' ? 'توفيق استباقي للشركاء المحليين لربط قانوني وتجاري متين.' : 'Local partner matchmaking for optimal structural stability.'}</p>
-                          <p>• {lang === 'ar' ? 'توطين الخدمات والمنتجات العالمية لملائمة المتطلبات المحلية.' : 'Localizing international offerings to align with Saudi business customs.'}</p>
+                          <p>• {lang === 'ar' ? 'توجيه وإرشاد تنظيمي متكامل للتعامل مع الجهات المعنية بالمملكة وروافد MISA.' : 'Regulatory navigation across MISA, SAGIA, and official Saudi channels.'}</p>
+                          <p>• {lang === 'ar' ? 'توفيق الشراكات والربط مع الكيانات المحلية لضمان دخول آمن ومستقر.' : 'Partnership matchmaking and local entity alignment for secure market entry.'}</p>
+                          <p>• {lang === 'ar' ? 'ملاءمة المنتجات والخدمات مع ثقافة وبيئة الأعمال المحلية السعودية.' : 'Localizing products and services to align with Saudi market demands and customs.'}</p>
                         </>
                       )}
                       {area.id === 'marketing-expansion' && (
                         <>
                           <p className="text-saudi font-bold uppercase tracking-wider">{lang === 'ar' ? 'مخرجاتنا الرئيسية:' : 'Key Deliverables:'}</p>
-                          <p>• {lang === 'ar' ? 'بناء الحضور التجاري وترسيخ الحصة السوقية بدقة عالية.' : 'Local brand penetration and commercial positioning.'}</p>
-                          <p>• {lang === 'ar' ? 'إدارة العلاقات العامة الراقية وتأصيل الموثوقية المؤسسية.' : 'High-end corporate PR, media relations, and brand authority campaigns.'}</p>
-                          <p>• {lang === 'ar' ? 'خطط استقطاب العملاء الكبار وتسهيل الاستحواذ السوقي.' : 'Targeted client acquisition strategies and market share growth.'}</p>
+                          <p>• {lang === 'ar' ? 'تصميم وبناء التموضع التجاري المناسب للمنتج أو الخدمة لضمان انتشارها.' : 'Creating tailored market-positioning files for products and services.'}</p>
+                          <p>• {lang === 'ar' ? 'إدارة حملات وقنوات السمعة لبناء موثوقية عالية للعلامة التجارية بسوقنا.' : 'Managing high-impact PR and brand-penetration campaigns to build authority.'}</p>
+                          <p>• {lang === 'ar' ? 'صياغة استراتيجيات قياس وتحليل الأداء والنمو المستمر.' : 'Designing continuous performance metrics and growth analytics.'}</p>
                         </>
                       )}
                       {area.id === 'real-estate' && (
                         <>
                           <p className="text-saudi font-bold uppercase tracking-wider">{lang === 'ar' ? 'مخرجاتنا الرئيسية:' : 'Key Deliverables:'}</p>
-                          <p>• {lang === 'ar' ? 'تطوير الفرص الاستثنائية المغلقة في العاصمة والوجهات التنموية.' : 'Off-market mega opportunity matchmaking in Riyadh and coastal developments.'}</p>
-                          <p>• {lang === 'ar' ? 'صياغة دراسات التموضع الاستثماري والتطويري لمشروعات النخبة.' : 'Strategic branding and positioning files for tier-1 development projects.'}</p>
-                          <p>• {lang === 'ar' ? 'تأهل وتوجيه الطلب المؤسسي ومكاتب العائلات التجارية الكبرى.' : 'Qualifying corporate demand, sovereign funds and GCC family offices.'}</p>
+                          <p>• {lang === 'ar' ? 'بناء وهيكلة قنوات التوزيع والتوريد لضمان تدفق مرن ومستدام.' : 'Structuring distribution and supply channels for seamless business flow.'}</p>
+                          <p>• {lang === 'ar' ? 'صياغة مسار رحلة العميل وبناء آليات تواصل وتحويل ذكية.' : 'Modeling the customer journey and implementing smart conversion tactics.'}</p>
+                          <p>• {lang === 'ar' ? 'ربط الشركات بالشركاء التجاريين وقنوات البيع الملائمة لزيادة الانتشار والطلب.' : 'Connecting brands with local commercial channel partners to boost sales and reach.'}</p>
                         </>
                       )}
                       {area.id === 'commercial-rep' && (
                         <>
                           <p className="text-saudi font-bold uppercase tracking-wider">{lang === 'ar' ? 'مخرجاتنا الرئيسية:' : 'Key Deliverables:'}</p>
-                          <p>• {lang === 'ar' ? 'تمثيل رسمي كامل للوفود والشركات والوكالات الكبرى.' : 'Official commercial delegation and corporate agency representation.'}</p>
-                          <p>• {lang === 'ar' ? 'تجهيز مسارات العمل القانوني والإداري الفعلي وبناء المقرات.' : 'Local operations setup, legal guidance, and executive workspace pathways.'}</p>
-                          <p>• {lang === 'ar' ? 'تنسيق متكامل للشؤون العامة والحكومية بسلاسة.' : 'Full-scope advocacy and government affairs coordination.'}</p>
+                          <p>• {lang === 'ar' ? 'تقييم وتحليل الفرص الاستثمارية والتجارية والجدوى الاقتصادية لها.' : 'Assessing and analyzing commercial opportunities and their business viability.'}</p>
+                          <p>• {lang === 'ar' ? 'هندسة المشاريع التجارية وتحويل الأفكار والوكالات لكيانات قابلة للتوسيع.' : 'Engineering commercial projects to turn ideas and agencies into scalable ventures.'}</p>
+                          <p>• {lang === 'ar' ? 'توفير المساندة الاستشارية والتشغيلية والتوجيه لضمان استجابة مرنة للمشروع.' : 'Providing operational support and guidance of critical project milestones.'}</p>
                         </>
                       )}
                     </div>

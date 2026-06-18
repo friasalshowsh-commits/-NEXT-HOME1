@@ -103,7 +103,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             initial={initialAnim}
             animate={animateAnim}
             transition={getTransition(0.16)}
-            className="text-[34px] min-[380px]:text-[38px] md:text-[54px] lg:text-[64px] font-bold leading-[1.18] tracking-tight text-balance text-[#151B18]" 
+            className="text-[34px] min-[380px]:text-[38px] md:text-[54px] lg:text-[60px] font-bold leading-[1.18] tracking-tight text-balance text-[#151B18]" 
             id="hero-headline"
           >
             {lang === 'ar' ? (
@@ -124,7 +124,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             initial={initialAnim}
             animate={animateAnim}
             transition={getTransition(0.24)}
-            className="text-[15px] sm:text-[16px] lg:text-[18px] xl:text-[20px] text-[#626B66] leading-relaxed rtl:leading-[1.8] font-normal max-w-[600px]" 
+            className="text-[15px] sm:text-[16px] lg:text-[18px] text-[#626B66] leading-relaxed rtl:leading-[1.8] font-normal max-w-[560px] mt-4 sm:mt-5 lg:mt-6" 
             id="hero-paragraph"
           >
             {currentTrans.hero.paragraph}
