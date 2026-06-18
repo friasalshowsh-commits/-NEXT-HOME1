@@ -56,7 +56,9 @@ export default function App() {
 
   // Update document metadata and HTML attributes on language toggle
   useEffect(() => {
-    document.title = "NEXT HOME | نيكست هوم";
+    document.title = lang === 'ar' 
+      ? "NEXT HOME | تطوير الأعمال ودخول السوق السعودي" 
+      : "NEXT HOME | Business Development & Saudi Market Entry";
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
   }, [lang]);
@@ -246,6 +248,7 @@ export default function App() {
         {/* 10. Descriptors on partnerships */}
         <WhyPartnerSection 
           currentTrans={currentTrans} 
+          lang={lang}
         />
 
         {/* 11. General Manager corporate card */}

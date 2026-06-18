@@ -2,6 +2,7 @@ import React, { ChangeEvent, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, Send, Building } from 'lucide-react';
 import { TranslationSchema } from '../../translations';
+import { SectionTitleReveal } from '../interactive/SectionTitleReveal';
 
 interface ContactSectionProps {
   lang: 'ar' | 'en';
@@ -49,9 +50,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               <span className="text-xs font-bold tracking-[0.15em] text-saudi uppercase block mb-2 sm:mb-3" id="contact-badge">
                 {currentTrans.contact.sectionBadge}
               </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl text-text-primary mb-3 sm:mb-4 font-extrabold tracking-tight" id="contact-title">
-                {currentTrans.contact.title}
-              </h2>
+              <SectionTitleReveal 
+                text={currentTrans.contact.title} 
+                variant="lines" 
+                className="text-2xl sm:text-3xl lg:text-4xl text-text-primary mb-3 sm:mb-4 font-extrabold tracking-tight" 
+                id="contact-title" 
+              />
               <p className="text-text-secondary text-sm sm:text-base font-normal leading-relaxed" id="contact-subtitle">
                 {currentTrans.contact.subtitle}
               </p>

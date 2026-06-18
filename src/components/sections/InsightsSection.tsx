@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Clock, BookOpen, X, ArrowUpRight } from 'lucide-react';
 import { TranslationSchema } from '../../translations';
 import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
+import { SectionTitleReveal } from '../interactive/SectionTitleReveal';
 
 interface InsightsSectionProps {
   lang: 'ar' | 'en';
@@ -37,9 +38,12 @@ export const InsightsSection: React.FC<InsightsSectionProps> = ({
               <span className="text-xs font-bold tracking-[0.15em] text-saudi uppercase block mb-2 sm:mb-3" id="insights-badge">
                 {currentTrans.insightsSec.tagline}
               </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl text-text-primary tracking-tight font-extrabold" id="insights-title">
-                {currentTrans.insightsSec.title}
-              </h2>
+              <SectionTitleReveal 
+                text={currentTrans.insightsSec.title} 
+                variant="lines" 
+                className="text-2xl sm:text-3xl lg:text-4xl text-text-primary tracking-tight font-extrabold" 
+                id="insights-title" 
+              />
             </div>
             <p className="text-text-secondary text-sm max-w-md font-normal leading-relaxed" id="insights-desc">
               {currentTrans.insightsSec.subtitle}

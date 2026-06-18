@@ -2,6 +2,9 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { TranslationSchema } from '../../translations';
 import generalManagerPortrait from '../../assets/images/regenerated_image_1781740349045.png';
+import { ParallaxImage } from '../interactive/ParallaxImage';
+import { SectionTitleReveal } from '../interactive/SectionTitleReveal';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 interface LeadershipSectionProps {
   lang: 'ar' | 'en';
@@ -12,6 +15,34 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({
   lang,
   currentTrans,
 }) => {
+  const isReduced = useReducedMotion();
+  const isRtl = lang === 'ar';
+
+  // Reveal direction based on grid visual alignment
+  const imageRevealDir = isRtl ? 'right' : 'left';
+
+  // Stagger loading configuration for leadership info and quotes
+  const infoContainerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+      }
+    }
+  };
+
+  const infoItemVariants = {
+    hidden: { opacity: 0, y: 15 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+    }
+  };
+
+  const activeContainer = isReduced ? {} : infoContainerVariants;
+  const activeItem = isReduced ? {} : infoItemVariants;
+
   return (
     <section 
       data-section="leadership"
@@ -23,53 +54,67 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({
       <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
         <div className="bg-bg-alt border border-border-light p-6 sm:p-12 relative overflow-hidden rounded-2xl shadow-sm" id="leadership-card">
           
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center" dir={lang === 'ar' ? 'rtl' : 'ltr'} id="leadership-grid">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center" dir={isRtl ? 'rtl' : 'ltr'} id="leadership-grid">
             
-            {/* Image Column */}
+            {/* Image Column using ParallaxImage but with zero scrolling intensity and disabled zoom scale */}
             <div className="md:col-span-5 flex justify-center" id="leadership-img-col">
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className="relative group shrink-0 w-full max-w-[260px] aspect-[3/4] overflow-hidden rounded-xl border border-saudi/25 shadow-md bg-neutral-100"
+              <ParallaxImage
+                src={generalManagerPortrait}
+                alt={currentTrans.leadership.name}
+                revealFrom={imageRevealDir}
+                strength={0}
+                disableScrollZoom={true}
+                className="relative shrink-0 w-full max-w-[260px] aspect-[3/4] rounded-xl border border-saudi/25 shadow-md bg-neutral-100"
+                imageClassName="transition-all duration-500"
                 id="leadership-img-frame"
-              >
-                <img 
-                  src={generalManagerPortrait} 
-                  alt={currentTrans.leadership.name} 
-                  className="w-full h-full object-cover object-center transition-all duration-500"
-                  referrerPolicy="no-referrer"
-                  loading="lazy"
-                  decoding="async"
-                  id="leadership-gm-img"
-                />
-              </motion.div>
+              />
             </div>
 
-            {/* Text Column */}
-            <div className={`md:col-span-7 space-y-4 sm:space-y-6 ${lang === 'ar' ? 'text-right' : 'text-left'}`} id="leadership-text-col">
+            {/* Text Column - staggered fade up */}
+            <motion.div 
+              variants={activeContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.25 }}
+              className={`md:col-span-7 space-y-4 sm:space-y-6 ${isRtl ? 'text-right' : 'text-left'}`} 
+              id="leadership-text-col"
+            >
               <div>
-                <span className="text-[10px] sm:text-[11px] font-bold tracking-wider text-saudi bg-saudi-light border border-saudi/15 px-3 py-1 inline-block rounded-md mb-3 sm:mb-4" id="leadership-badge">
+                <motion.span 
+                  variants={activeItem}
+                  className="text-[10px] sm:text-[11px] font-bold tracking-wider text-saudi bg-saudi-light border border-saudi/15 px-3 py-1 inline-block rounded-md mb-3 sm:mb-4" 
+                  id="leadership-badge"
+                >
                   {currentTrans.leadership.label}
-                </span>
+                </motion.span>
 
                 <div className="space-y-1 sm:space-y-2" id="leadership-info-box">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl text-text-primary font-bold" id="leadership-gm-name">
-                    {currentTrans.leadership.name}
-                  </h3>
-                  <p className="text-[10px] sm:text-xs tracking-wider text-saudi font-bold uppercase" id="leadership-gm-role">
+                  <SectionTitleReveal 
+                    text={currentTrans.leadership.name} 
+                    variant="lines" 
+                    className="text-xl sm:text-2xl md:text-3xl text-text-primary font-bold/90" 
+                    id="leadership-gm-name" 
+                  />
+                  <motion.p 
+                    variants={activeItem}
+                    className="text-[10px] sm:text-xs tracking-wider text-saudi font-bold uppercase" 
+                    id="leadership-gm-role"
+                  >
                     {currentTrans.leadership.title}
-                  </p>
+                  </motion.p>
                 </div>
               </div>
 
-              <div className={`border-border-light pt-4 sm:pt-6 border-t relative before:absolute before:top-0 before:w-12 before:h-[1px] before:bg-saudi/45 ${lang === 'ar' ? 'before:right-0' : 'before:left-0'}`} id="leadership-quote-box">
+              <motion.div 
+                variants={activeItem}
+                className={`border-border-light pt-4 sm:pt-6 border-t relative before:absolute before:top-0 before:w-12 before:h-[1px] before:bg-saudi/45 ${isRtl ? 'before:right-0' : 'before:left-0'}`} 
+                id="leadership-quote-box"
+              >
                 <p className="text-text-secondary text-sm sm:text-base leading-relaxed font-normal italic" id="leadership-quote-text">
                   {currentTrans.leadership.quote}
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
           </div>
         </div>

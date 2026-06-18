@@ -1,8 +1,11 @@
 {
-  "name": "NEXT HOME",
+  "name": "NEXT HOME | نيكست هوم",
   "short_name": "NEXT HOME",
-  "description": "شركة سعودية متخصصة في تطوير الأعمال وبناء الشراكات الاستراتيجية",
+  "description": "شركة سعودية متخصصة في تطوير الأعمال والشراكات الاستراتيجية.",
+  "lang": "ar",
+  "dir": "rtl",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#FFFFFF",
   "theme_color": "#07583F",

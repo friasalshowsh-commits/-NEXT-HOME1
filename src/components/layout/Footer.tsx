@@ -59,19 +59,19 @@ export const Footer: React.FC<FooterProps> = ({
                 
                 {/* Commercial Registration Card */}
                 <div 
-                  className="group relative rounded-[18px] border border-white/10 bg-white/[0.045] p-2 sm:p-2.5 flex items-center justify-between gap-1.5 hover:bg-white/[0.07] hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 select-all h-[76px] sm:h-[84px] md:h-[90px]" 
+                  className="group relative rounded-[18px] border border-white/10 bg-white/[0.045] p-1.5 sm:p-2 flex items-center justify-between gap-1 hover:bg-white/[0.07] hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 select-all h-[76px] sm:h-[84px] md:h-[90px]" 
                   id="footer-cr-card"
                   dir={lang === 'ar' ? 'rtl' : 'ltr'}
                 >
                   <div className="flex-1 min-w-0 flex flex-col justify-center" id="footer-cr-card-info">
                     <div className="flex items-center gap-1 flex-wrap" id="footer-cr-card-title-row">
-                      <span className="text-[8px] sm:text-[9.5px] font-bold text-white/60 block tracking-tight sm:tracking-wide select-none truncate">
+                      <span className="text-[8px] sm:text-[9.5px] font-bold text-white/60 block tracking-tight sm:tracking-wide select-none">
                         {currentTrans.legalInfo.commercialRegistration}
                       </span>
                     </div>
                     <span 
                       dir="ltr"
-                      className="block text-[10.5px] min-[360px]:text-[11.5px] sm:text-xs md:text-[13px] font-black text-white mt-1 font-mono tracking-tight sm:tracking-normal select-all rtl:text-right ltr:text-left truncate"
+                      className="block text-[12px] min-[350px]:text-[13px] sm:text-[15px] lg:text-[17px] font-black text-white mt-1 font-mono tracking-tight sm:tracking-normal select-all rtl:text-right ltr:text-left whitespace-nowrap max-[350px]:whitespace-normal max-[350px]:break-all"
                       style={{ fontVariantNumeric: 'tabular-nums' }}
                     >
                       {companyLegalInfo.commercialRegistration}
@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({
                   </div>
                   {/* Premium Seal/Stamp graphic in place of plain lucide icon */}
                   <div className="shrink-0 scale-90 sm:scale-100" id="footer-cr-card-badge">
-                    <svg viewBox="0 0 40 40" className="w-[26px] h-[26px] sm:w-[32px] sm:h-[32px] shrink-0 opacity-90 select-none">
+                    <svg viewBox="0 0 40 40" className="w-[18px] h-[18px] sm:w-[22px] sm:h-[22px] shrink-0 opacity-90 select-none">
                       <defs>
                         <radialGradient id="saudiBadgeGrad" cx="50%" cy="50%" r="50%">
                           <stop offset="0%" stopColor="#086e4e" />
@@ -104,19 +104,19 @@ export const Footer: React.FC<FooterProps> = ({
 
                 {/* VAT Tax Registration Card */}
                 <div 
-                  className="group relative rounded-[18px] border border-white/10 bg-white/[0.045] p-2 sm:p-2.5 flex items-center justify-between gap-1.5 hover:bg-white/[0.07] hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 select-all h-[76px] sm:h-[84px] md:h-[90px]" 
+                  className="group relative rounded-[18px] border border-white/10 bg-white/[0.045] p-1.5 sm:p-2 flex items-center justify-between gap-1 hover:bg-white/[0.07] hover:border-white/20 hover:-translate-y-0.5 transition-all duration-300 select-all h-[76px] sm:h-[84px] md:h-[90px]" 
                   id="footer-vat-card"
                   dir={lang === 'ar' ? 'rtl' : 'ltr'}
                 >
                   <div className="flex-1 min-w-0 flex flex-col justify-center" id="footer-vat-card-info">
                     <div className="flex items-center gap-1 flex-wrap" id="footer-vat-card-title-row">
-                      <span className="text-[8px] sm:text-[9.5px] font-bold text-white/60 block tracking-tight sm:tracking-wide select-none truncate">
+                      <span className="text-[8px] sm:text-[9.5px] font-bold text-white/60 block tracking-tight sm:tracking-wide select-none">
                         {currentTrans.legalInfo.vatNumber}
                       </span>
                     </div>
                     <span 
                       dir="ltr"
-                      className="block text-[10.5px] min-[360px]:text-[11.5px] sm:text-xs md:text-[13px] font-black text-white mt-1 font-mono tracking-tight sm:tracking-normal select-all rtl:text-right ltr:text-left truncate"
+                      className="block text-[12px] min-[350px]:text-[13px] sm:text-[15px] lg:text-[17px] font-black text-white mt-1 font-mono tracking-tight sm:tracking-normal select-all rtl:text-right ltr:text-left whitespace-nowrap max-[350px]:whitespace-normal max-[350px]:break-all"
                       style={{ fontVariantNumeric: 'tabular-nums' }}
                     >
                       {companyLegalInfo.vatNumber}
@@ -124,7 +124,7 @@ export const Footer: React.FC<FooterProps> = ({
                   </div>
                   {/* Premium secure shield tech badge */}
                   <div className="shrink-0 scale-90 sm:scale-100" id="footer-vat-card-badge">
-                    <svg viewBox="0 0 40 40" className="w-[26px] h-[26px] sm:w-[32px] sm:h-[32px] shrink-0 opacity-90 select-none">
+                    <svg viewBox="0 0 40 40" className="w-[18px] h-[18px] sm:w-[22px] sm:h-[22px] shrink-0 opacity-90 select-none">
                       <defs>
                         <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                           <stop offset="0%" stopColor="#7EB39E" stopOpacity="0.8" />
