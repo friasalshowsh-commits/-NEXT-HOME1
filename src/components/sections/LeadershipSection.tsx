@@ -60,7 +60,7 @@ export const LeadershipSection: React.FC<LeadershipSectionProps> = ({
             <div className="md:col-span-5 flex justify-center" id="leadership-img-col">
               <ParallaxImage
                 src={generalManagerPortrait}
-                alt={currentTrans.leadership.name}
+                alt={lang === 'ar' ? "المدير العام لشركة نيكست هوم" : `General Manager of NEXT HOME - ${currentTrans.leadership.name}`}
                 revealFrom={imageRevealDir}
                 strength={0}
                 disableScrollZoom={true}

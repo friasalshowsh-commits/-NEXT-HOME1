@@ -123,7 +123,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           {/* Image Column - ParallaxImage with clip reveal direction */}
           <ParallaxImage 
             src={aboutMeeting}
-            alt={currentTrans.aboutSection.imageAlt}
+            alt={lang === 'ar' ? "اجتماع أعمال سعودي لتطوير شراكة استراتيجية" : "Saudi business meeting to establish strategic partnerships"}
             revealFrom={revealDir}
             strength={25}
             className="w-full aspect-[4/3] rounded-xl border border-[#DCE5E0]/60 shadow-xs"

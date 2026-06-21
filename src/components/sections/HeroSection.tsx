@@ -54,7 +54,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* 2.5D Scroll and Cursor Responsive Skyline Background */}
       <ParallaxBackground
         src={heroSkyline}
-        alt={currentTrans.hero.imageAlt || "Riyadh daylight skyline"}
+        alt={lang === 'ar' ? "أفق مدينة الرياض ومركز الملك عبدالله المالي" : "Riyadh daylight skyline and King Abdullah Financial District background"}
         lang={lang}
         springX={springX}
         springY={springY}

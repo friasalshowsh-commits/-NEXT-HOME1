@@ -339,7 +339,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
         khobarAlt: "Al Khobar corporate skyline",
       },
       hqBadge: "HEADQUARTERS",
-      mapAriaLabel: "Map showing geographic commercial coverage of NEXT HOME across Riyadh, Jeddah, Dammam and Al Khobar",
+      mapAriaLabel: "Commercial access footprint map of NEXT HOME within the Kingdom of Saudi Arabia",
       mapCaption: "Commercial reach across key Saudi markets",
       bullets: [
         {
@@ -515,7 +515,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
       eyebrow: "عن الشركة",
       title: "نحن نفتح الأبواب للنمو والفرص",
       paragraphs: [
-        "NEXT HOME شركة سعودية متخصصة في تطوير الأعمال والنمو التجاري وبناء الشراكات. نعمل مع الشركات والعلامات التجارية في مختلف القطاعات لمساعدتها على دخول السوق السعودي، تطوير قنوات التسويق والمبيعات، وبناء فرص توسع مستدامة.",
+        "شركة NEXT HOME (نيكست هوم) هي شركة سعودية متخصصة في تطوير الأعمال والنمو التجاري وبناء الشراكات. نعمل مع الشركات والعلامات التجارية في مختلف القطاعات لمساعدتها على دخول السوق السعودي، تطوير قنوات التسويق والمبيعات، وبناء فرص توسع مستدامة.",
         "لا نعتمد حلولاً جاهزة أو مرتبطة بقطاع واحد؛ بل نبني لكل منتج أو خدمة استراتيجية تتناسب مع السوق والعملاء وطبيعة الفرصة."
       ],
       bullets: [
@@ -627,7 +627,7 @@ export const translations: Record<"en" | "ar", TranslationSchema> = {
         khobarAlt: "نافذة أبراج الخبر للأعمال",
       },
       hqBadge: "المقر الرئيسي",
-      mapAriaLabel: "خريطة توضح الوصول التجاري الجغرافي لشركة نيكست هوم في الرياض وجدة والدمام والخبر",
+      mapAriaLabel: "خريطة الوصول التجاري لشركة نيكست هوم داخل المملكة العربية السعودية",
       mapCaption: "وصول تجاري إلى الأسواق الرئيسية في المملكة",
       bullets: [
         {
