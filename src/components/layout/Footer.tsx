@@ -12,6 +12,8 @@ export const Footer: React.FC<FooterProps> = ({
   lang,
   currentTrans,
 }) => {
+  const homePath = lang === 'ar' ? '/' : '/en/';
+
   return (
     <footer id="footer-nav" className="relative z-20 bg-saudi-dark border-t border-saudi-dark/60 py-16 sm:py-24 text-white/70 overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
@@ -20,15 +22,20 @@ export const Footer: React.FC<FooterProps> = ({
           
           {/* Column 1: Corporate Profile */}
           <div className="space-y-4" id="footer-col-profile">
-            <a href="#" className="flex flex-col select-none group focus:outline-none" id="footer-logo-anchor">
-              <span className="text-xl tracking-normal text-white font-bold uppercase leading-none" id="footer-brand-title">
+            <a 
+              href={homePath} 
+              aria-label="NEXT HOME | نيكست هوم" 
+              className="flex flex-col text-right rtl:text-right ltr:text-left focus:outline-none select-none group whitespace-nowrap leading-none gap-1" 
+              id="footer-logo-anchor"
+            >
+              <span className="font-sans text-[20px] sm:text-[22px] lg:text-[24px] font-extrabold tracking-wider text-white uppercase leading-none" id="footer-brand-title">
                 NEXT HOME
               </span>
-              <span className="text-xs tracking-wider text-saudi-sand mt-1 font-semibold" id="footer-brand-subtitle">
+              <span className="text-[10px] sm:text-[11px] tracking-[0.05em] text-white/80 uppercase font-bold leading-none" id="footer-brand-subtitle">
                 نيكست هوم
               </span>
             </a>
-            <p className="text-xs text-white/60 leading-relaxed font-normal max-w-xs" id="footer-tagline-text">
+            <p className="text-xs text-white/60 leading-relaxed font-normal max-w-xs pt-2" id="footer-tagline-text">
               {currentTrans.footer.tagline}
             </p>
           </div>
@@ -38,11 +45,39 @@ export const Footer: React.FC<FooterProps> = ({
             <h4 className="text-xs uppercase text-white font-bold tracking-wider select-none" id="footer-services-heading">
               {currentTrans.footer.businessAreasLabel}
             </h4>
-            <ul className="space-y-2.5 text-xs text-white/50 font-normal" id="footer-services-list">
-              <li>{currentTrans.businessAreas.items[0].title}</li>
-              <li>{currentTrans.businessAreas.items[1].title}</li>
-              <li>{currentTrans.businessAreas.items[2].title}</li>
-              <li>{currentTrans.footer.mktGrowth}</li>
+            <ul className="space-y-2.5 text-xs text-white/50 font-semibold" id="footer-services-list">
+              <li>
+                <a 
+                  href={lang === 'ar' ? '/services/business-development-saudi-arabia' : '/en/services/business-development-saudi-arabia'}
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  {currentTrans.businessAreas.items[0].title}
+                </a>
+              </li>
+              <li>
+                <a 
+                  href={lang === 'ar' ? '/services/saudi-market-entry' : '/en/services/saudi-market-entry'}
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  {currentTrans.businessAreas.items[2].title}
+                </a>
+              </li>
+              <li>
+                <a 
+                  href={lang === 'ar' ? '/services/strategic-partnerships' : '/en/services/strategic-partnerships'}
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  {currentTrans.businessAreas.items[1].title}
+                </a>
+              </li>
+              <li>
+                <a 
+                  href={lang === 'ar' ? '/services/marketing-sales-development' : '/en/services/marketing-sales-development'}
+                  className="hover:text-white transition-colors duration-200"
+                >
+                  {currentTrans.footer.mktGrowth}
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -173,11 +208,11 @@ export const Footer: React.FC<FooterProps> = ({
               </li>
               <li dir="ltr" className="rtl:text-right ltr:text-left">
                 <a 
-                  href="tel:+966506612761" 
+                  href="tel:+966583444811" 
                   className="hover:text-white transition-colors duration-200"
                   id="footer-phone-link"
                 >
-                  +966 50 661 2761
+                  +966 58 344 4811
                 </a>
               </li>
             </ul>

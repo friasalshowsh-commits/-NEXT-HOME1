@@ -88,7 +88,7 @@ export const BusinessAreasSection: React.FC<BusinessAreasSectionProps> = ({
                         <>
                           <p className="text-saudi font-bold uppercase tracking-wider">{lang === 'ar' ? 'مخرجاتنا الرئيسية:' : 'Key Deliverables:'}</p>
                           <p>• {lang === 'ar' ? 'توجيه وإرشاد تنظيمي متكامل للتعامل مع الجهات المعنية بالمملكة وروافد MISA.' : 'Regulatory navigation across MISA, SAGIA, and official Saudi channels.'}</p>
-                          <p>• {lang === 'ar' ? 'توفيق الشراكات والربط مع الكيانات المحلية لضمان دخول آمن ومستقر.' : 'Partnership matchmaking and local entity alignment for secure market entry.'}</p>
+                          <p>• {lang === 'ar' ? 'تتوفيق الشراكات والربط مع الكيانات المحلية لضمان دخول آمن ومستقر.' : 'Partnership matchmaking and local entity alignment for secure market entry.'}</p>
                           <p>• {lang === 'ar' ? 'ملاءمة المنتجات والخدمات مع ثقافة وبيئة الأعمال المحلية السعودية.' : 'Localizing products and services to align with Saudi market demands and customs.'}</p>
                         </>
                       )}
@@ -116,6 +116,25 @@ export const BusinessAreasSection: React.FC<BusinessAreasSectionProps> = ({
                           <p>• {lang === 'ar' ? 'توفير المساندة الاستشارية والتشغيلية والتوجيه لضمان استجابة مرنة للمشروع.' : 'Providing operational support and guidance of critical project milestones.'}</p>
                         </>
                       )}
+
+                      {/* Crawlable details page link */}
+                      <div className="mt-4 pt-3 border-t border-saudi/15 flex justify-end" id={`service-link-box-${area.id}`}>
+                        <a 
+                          href={
+                            area.id === 'bus-dev' || area.id === 'commercial-rep'
+                              ? (lang === 'ar' ? '/services/business-development-saudi-arabia' : '/en/services/business-development-saudi-arabia')
+                              : area.id === 'market-entry'
+                              ? (lang === 'ar' ? '/services/saudi-market-entry' : '/en/services/saudi-market-entry')
+                              : area.id === 'partnerships'
+                              ? (lang === 'ar' ? '/services/strategic-partnerships' : '/en/services/strategic-partnerships')
+                              : (lang === 'ar' ? '/services/marketing-sales-development' : '/en/services/marketing-sales-development')
+                          }
+                          className="text-[11px] font-bold text-saudi hover:text-saudi-dark transition-colors inline-flex items-center gap-1 group/link"
+                          id={`service-anchor-${area.id}`}
+                        >
+                          <span>{lang === 'ar' ? 'عرض تفاصيل الخدمة المتكاملة ←' : 'View full service details ←'}</span>
+                        </a>
+                      </div>
                     </div>
                   </motion.div>
                 )}

@@ -179,6 +179,25 @@ export const InsightsSection: React.FC<InsightsSectionProps> = ({
                   ))}
                 </div>
 
+                {/* Related service crawlable link */}
+                <div className="mt-8 pt-6 border-t border-border-light/65 w-full max-w-3xl flex justify-center" id="insight-modal-related-link">
+                  <a
+                    href={
+                      activeArticleIdx === 0
+                        ? (lang === 'ar' ? '/services/saudi-market-entry' : '/en/services/saudi-market-entry')
+                        : (lang === 'ar' ? '/services/strategic-partnerships' : '/en/services/strategic-partnerships')
+                    }
+                    className="text-xs sm:text-sm font-bold text-saudi hover:text-saudi-dark transition-colors inline-flex items-center gap-1 hover:underline cursor-pointer"
+                    id="insight-related-service-anchor"
+                  >
+                    <span>
+                      {activeArticleIdx === 0
+                        ? (lang === 'ar' ? 'اقرأ المزيد حول خدمات دخول السوق السعودي ←' : 'Read more about our Saudi Market Entry services ←')
+                        : (lang === 'ar' ? 'اقرأ المزيد حول خدمات الشراكات الاستراتيجية ←' : 'Read more about our Strategic Partnerships services ←')}
+                    </span>
+                  </a>
+                </div>
+
                 {/* Footnote signature */}
                 <span className="text-text-secondary/70 text-xs sm:text-sm italic block text-center mt-10 sm:mt-12 font-semibold border-t border-border-light/65 pt-4 w-full" id="insight-modal-footnote">
                   {currentTrans.insightsSec.signature}

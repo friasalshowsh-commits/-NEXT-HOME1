@@ -3,10 +3,10 @@
   <title>NEXT HOME | Mark</title>
   
   <!-- Sparkle above the monogram -->
-  <path d="M 56.5,12 C 56.5,16.5 54.5,18.5 50,19 C 54.5,19.5 56.5,21.5 56.5,26 C 56.5,21.5 58.5,19.5 63,19 C 58.5,18.5 56.5,16.5 56.5,12 Z" fill="#07583F" />
+  <path d="M 56.5,12 C 56.5,16.5 54.5,18.5 50,19 C 54.5,19.5 56.5,21.5 56.5,26 C 56.5,21.5 58.5,19.5 63,19 C 58.5,18.5 56.5,16.5 56.5,12 Z" fill="#FFFFFF" />
   
   <!-- Intertwined NH Monogram Group -->
-  <g fill="#07583F">
+  <g fill="#FFFFFF">
     <!-- N Left Stem: starts with elegant flared bottom-left serif, goes up and curves over the top into the diagonal -->
     <path d="M 33,85 L 47,85 L 47,81 L 43,81 L 43,48 C 43,36 49,32 58,32 C 63,32 67,35 70,41 L 88,81 L 88,85 L 80,85 L 80,81 L 85,81 L 69,45 C 67,41 64,38 60,38 C 55,38 51,42 51,48 L 51,81 L 47,81 L 47,85 L 33,85 Z" />
     

@@ -303,12 +303,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                     {currentTrans.contact.phoneLabel}
                   </span>
                   <a 
-                    href="tel:+966506612761" 
+                    href="tel:+966583444811" 
                     className="text-text-primary text-sm sm:text-base font-bold hover:text-saudi transition-colors font-sans"
                     dir="ltr"
                     id="exec-phone-link"
                   >
-                    +966 50 661 2761
+                    +966 58 344 4811
                   </a>
                 </div>
 
